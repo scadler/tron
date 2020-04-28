@@ -3,15 +3,17 @@
 // const context = canvas.getContext("2d");
 const status = {
     game : "inProgress",
+    compDirectionSwitched : 0,
+    lastTurnUp : true,
 }
 var player = {
-    position: 125,
+    position: 1900,
     color : "#8888FF",
     trailColor : "#0000FF",
     direction : 1,
 }
 var computer = {
-    position: 1175,
+    position: 3724,
     color : "#FFFF88",
     trailColor : "#FFFF00",
     direction : -1,
@@ -31,7 +33,8 @@ function createGrid(){
     }
 }
 createGrid();
- function draw(position, direction, color, trailColor, type){
+
+function draw(position, direction, color, trailColor, type){
     var newPosition = position + direction
     if($("#"+newPosition).css("background-color") === "rgb(0, 0, 17)"){
         if(type === "player"){
@@ -46,6 +49,7 @@ createGrid();
         status.game = "over"
     }
 }
+
 function checkCollisions(position, direction){
     if((position%75 === 0 && direction === -1) || (position%75 === 74 && direction === 1) || (position<75 && direction === -75) || (position>5549 && direction === 75)){
         status.game = "over"
@@ -53,15 +57,26 @@ function checkCollisions(position, direction){
 }
 function computerAI(){
     var newPos = computer.position + computer.direction
-    if(Math.random()-0.9 > 0){
+    status.compDirectionSwitched += 1
+    if(Math.random()-0.95> 0 && status.compDirectionSwitched > 30){
+        status.compDirectionSwitched = 0
         var num = Math.random()
-        const PotentialDirection = (num < 0.25) ? -1 : (num < 0.5) ? 1 : (num<0.75) ? 75 : -75;
+        var PotentialDirection = (num < 0.25) ? -1 : (num < 0.5) ? 1 : (num<0.75) ? 75 : -75;
         PotentialPosition = computer.position + PotentialDirection;
-        if(PotentialPosition % 75 <= 1 || PotentialPosition % 75 >=72 || PotentialPosition<255 || PotentialPosition>5399){
-            PotentialDirection *= -1
+        var PotentialNextPosition = PotentialDirection + PotentialPosition
+        if(PotentialPosition === newPos){
+
         }
-        if($("#"+ PotentialPosition).css("background-color") === "rgb(0, 0, 17)"){
+        else if($("#"+ PotentialNextPosition).css("background-color") !== "rgb(0, 0, 17)"){
+            PotentialDirection *=-1
+            if($("#"+ PotentialPosition).css("background-color") === "rgb(0, 0, 17)"){
+                computer.position = PotentialPosition
+                computer.direction = PotentialDirection
+            }
+        }
+        else if($("#"+ PotentialPosition).css("background-color") === "rgb(0, 0, 17)"){
             computer.position = PotentialPosition
+            computer.direction = PotentialDirection
         }
     }
     else if($("#"+newPos).css("background-color") !== "rgb(0, 0, 17)"){
@@ -69,26 +84,35 @@ function computerAI(){
         var left = computer.position-1
         var down = computer.position+75
         var right = computer.position+1
-        if($("#"+up).css("background-color") === "rgb(0, 0, 17)"){
-            computer.direction = -75
+        if($("#"+down).css("background-color") === "rgb(0, 0, 17)" && status.lastTurnUp === true && down !== newPos){
+            computer.direction = 75
+            status.lastTurnUp = false;
         }
-        else if($("#"+left).css("background-color") === "rgb(0, 0, 17)"){
+        else if($("#"+left).css("background-color") === "rgb(0, 0, 17)" && left !== newPos){
             computer.direction = -1
         }
+        else if($("#"+up).css("background-color") === "rgb(0, 0, 17)" && up !== newPos){
+            computer.direction = -75
+            status.lastTurnUp = true;
+        }
+        else if($("#"+right).css("background-color") === "rgb(0, 0, 17)" && right !== newPos){
+            computer.direction = 1
+        }
+        //this last line is to make sure that when the last turn was up but the case to turn down is the only one to evaulate true the bike can still turn down 
         else if($("#"+down).css("background-color") === "rgb(0, 0, 17)"){
             computer.direction = 75
-        }
-        else if($("#"+right).css("background-color") === "rgb(0, 0, 17)"){
-            computer.direction = 1
+            status.lastTurnUp = false;
         }
         else{
             status.game = "over"
         }
     }
 }
+
+
 function game(){
     if(status.game==="inProgress"){
-        // draw(player.position, player.direction, player.color, player.trailColor, "player")
+        draw(player.position, player.direction, player.color, player.trailColor, "player")
         draw(computer.position, computer.direction, computer.color, computer.trailColor, "computer")
         checkCollisions(player.position, player.direction)
         checkCollisions(computer.position, computer.direction)
