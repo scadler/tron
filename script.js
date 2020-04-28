@@ -22,9 +22,18 @@ createGrid();
     $("#"+position).css("background-color", trailColor);
     $("#"+newPosition).css("background-color", color);
  }
-
+function checkCollisions(position, direction){
+    if(position%75 === 0 || (position-74) %75 === 0){
+        //will later make this code end the game
+        player.position = 1075
+    }
+    else if((position<75 && direction === -75) || position>5549 && direction === 75){
+        player.position = 1075
+    }
+}
 function game(){
     draw(player.position, player.direction, player.color, player.trailColor)
+    checkCollisions(player.position, player.direction)
  }
 setInterval(game,100)
 function resetGrid(){
