@@ -7,6 +7,12 @@ var player = {
     trailColor : "#0000FF",
     direction : 1,
 }
+var computer = {
+    position: 1175,
+    color : "#FFFF88",
+    trailColor : "#FFFF00",
+    direction : -1,
+}
 function createGrid(){
     var i = 0;
     console.log("grid")
@@ -16,24 +22,54 @@ function createGrid(){
     }
 }
 createGrid();
- function draw(position, direction, color, trailColor){
+ function draw(position, direction, color, trailColor, type){
     var newPosition = position + direction
-    player.position = newPosition
+    if(type === "player"){
+        player.position = newPosition
+    }else{
+        computer.position = newPosition
+    }
     $("#"+position).css("background-color", trailColor);
     $("#"+newPosition).css("background-color", color);
  }
 function checkCollisions(position, direction){
-    if(position%75 === 0 || (position-74) %75 === 0){
+    if((position%75 === 0 && direction === -1) || (position%75 === 74 && direction === 1)){
         //will later make this code end the game
         player.position = 1075
+        console.log("A")
     }
-    else if((position<75 && direction === -75) || position>5549 && direction === 75){
+    else if((position<75 && direction === -75) || (position>5549 && direction === 75)){
         player.position = 1075
+        console.log("B")
+    }
+}
+function computerAI(){
+    var newPos = computer.position + computer.direction
+    if($("#"+newPos).css("background-color") !== "rgb(0, 0, 17)"){
+        var up = computer.position-75
+        var left = computer.position-1
+        var down = computer.position+75
+        var right = computer.position+1
+        if($("#"+up).css("background-color") === "rgb(0, 0, 17)"){
+            computer.direction = -75
+        }
+        else if($("#"+left).css("background-color") === "rgb(0, 0, 17)"){
+            computer.direction = -1
+        }
+        else if($("#"+down).css("background-color") === "rgb(0, 0, 17)"){
+            computer.direction = 75
+        }
+        else if($("#"+right).css("background-color") === "rgb(0, 0, 17)"){
+            computer.direction = 1
+        }
     }
 }
 function game(){
-    draw(player.position, player.direction, player.color, player.trailColor)
+    draw(player.position, player.direction, player.color, player.trailColor, "player")
+    draw(computer.position, computer.direction, computer.color, computer.trailColor, "computer")
     checkCollisions(player.position, player.direction)
+    checkCollisions(computer.position, computer.direction)
+    computerAI()
  }
 setInterval(game,100)
 function resetGrid(){
