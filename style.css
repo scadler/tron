@@ -1,12 +1,14 @@
 #grid{
     width:600px;
     height:600px;
-    border:2px solid #000;
+    top:1px solid #004;
+    left:1px solid #004;
 }
 .cell{
-    border: 1px solid #004;
-    height: 10px;
-    width: 10px;
+    border-right: 1px solid #003;
+    border-bottom: 1px solid #004;
+    height: 7px;
+    width: 7px;
     float:left;
-    background-color: #222
+    background-color: #001;
 }
