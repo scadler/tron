@@ -5,6 +5,7 @@ const status = {
     game : "inProgress",
     compDirectionSwitched : 0,
     lastTurnUp : true,
+    nearWall:false
 }
 var player = {
     position: 1900,
@@ -55,31 +56,40 @@ function checkCollisions(position, direction){
         status.game = "over"
     }
 }
+var newDirec = 0;
 function computerAI(){
     var newPos = computer.position + computer.direction
-    status.compDirectionSwitched += 1
-    if(Math.random()-0.95> 0 && status.compDirectionSwitched > 30){
-        status.compDirectionSwitched = 0
-        var num = Math.random()
-        var PotentialDirection = (num < 0.25) ? -1 : (num < 0.5) ? 1 : (num<0.75) ? 75 : -75;
-        PotentialPosition = computer.position + PotentialDirection;
-        var PotentialNextPosition = PotentialDirection + PotentialPosition
-        if(PotentialPosition === newPos){
-
-        }
-        else if($("#"+ PotentialNextPosition).css("background-color") !== "rgb(0, 0, 17)"){
-            PotentialDirection *=-1
-            if($("#"+ PotentialPosition).css("background-color") === "rgb(0, 0, 17)"){
-                computer.position = PotentialPosition
-                computer.direction = PotentialDirection
+    var aNewPos = newPos + computer.direction
+    var bNewPos = aNewPos + computer.direction
+    var cNewPos = bNewPos + computer.direction
+    var dNewPos = cNewPos + computer.direction
+    if($("#"+newPos).css("background-color") !== "rgb(0, 0, 17)" || $("#"+aNewPos).css("background-color") !== "rgb(0, 0, 17)" || $("#"+bNewPos).css("background-color") !== "rgb(0, 0, 17)" || $("#"+cNewPos).css("background-color") !== "rgb(0, 0, 17)" ||  $("#"+dNewPos).css("background-color") !== "rgb(0, 0, 17)"){
+        if(computer.direction%75 === 0){
+            newDirec = (Math.random()-0.5 > 0) ? -1 : 1
+            possibleNewPos = computer.position + newDirec
+            if($("#"+possibleNewPos).css("background-color") === "rgb(0, 0, 17)"){
+                computer.direction = newDirec
+            }
+            newDirec = -newDirec
+            possibleNewPos = computer.position + newDirec
+            if($("#"+possibleNewPos).css("background-color") === "rgb(0, 0, 17)"){
+                computer.direction = newDirec
             }
         }
-        else if($("#"+ PotentialPosition).css("background-color") === "rgb(0, 0, 17)"){
-            computer.position = PotentialPosition
-            computer.direction = PotentialDirection
+        else{
+            newDirec = (Math.random()-0.5 > 0) ? -75 : 75
+            possibleNewPos = computer.position + newDirec
+            if($("#"+possibleNewPos).css("background-color") === "rgb(0, 0, 17)"){
+                computer.direction = newDirec
+            }
+            newDirec = -newDirec
+            possibleNewPos = computer.position + newDirec
+            if($("#"+possibleNewPos).css("background-color") === "rgb(0, 0, 17)"){
+                computer.direction = newDirec
+            }
         }
     }
-    else if($("#"+newPos).css("background-color") !== "rgb(0, 0, 17)"){
+    if($("#"+newPos).css("background-color") !== "rgb(0, 0, 17)"){
         var up = computer.position-75
         var left = computer.position-1
         var down = computer.position+75
@@ -112,14 +122,14 @@ function computerAI(){
 
 function game(){
     if(status.game==="inProgress"){
-        draw(player.position, player.direction, player.color, player.trailColor, "player")
+        // draw(player.position, player.direction, player.color, player.trailColor, "player")
         draw(computer.position, computer.direction, computer.color, computer.trailColor, "computer")
         checkCollisions(player.position, player.direction)
         checkCollisions(computer.position, computer.direction)
         computerAI()
     }
 }
-setInterval(game,100)
+setInterval(game,20)
 function resetGrid(){
     $("#grid").empty();
     createGrid();
@@ -144,6 +154,8 @@ function keyPressed(e){
         e.preventDefault();
         resetGrid()
         status.game = "inProgress"
+        computer.position = 3724
+        player.position = 1900
     }
   }
 function keyUp(){
