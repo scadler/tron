@@ -2,11 +2,17 @@
 // const canvas = document.getElementById("pong");
 // const context = canvas.getContext("2d");
 const status = {
-    game : "inProgress",
+    yellow: 1,
+    blue: 1,
+    green: 1,
+    red: 1,
     compDirectionSwitched : 0,
     lastTurnUp : true,
+    lastTurnUpB : true,
+    lastTurnUpC : true,
     nearWall:false,
-    a : 51
+    a : 51,
+    b : 51
 }
 var player = {
     position: 2020,
@@ -20,6 +26,18 @@ var computer = {
     trailColor : "#FFFF00",
     direction : -1,
 }
+var computerB = {
+    position: 7920 ,
+    color : "#FF8888",
+    trailColor : "#FF0000",
+    direction : -100,
+}
+var computerC = {
+    position: 2080 ,
+    color : "#88FF88",
+    trailColor : "#00FF00",
+    direction : 100,
+}
 function createGrid(){
     var i = 0;
     while(i < 10000){
@@ -28,7 +46,7 @@ function createGrid(){
     }
     var i = 0
     while(i < 10000){
-        if(i<100 || i>9999 || i%100 == 0 || i%100 === 99){
+        if(i<100 || i>9899 || i%100 == 0 || i%100 === 99){
             $("#"+i).css("background-color","#0000a0")
         }
         i++
@@ -41,65 +59,106 @@ function draw(position, direction, color, trailColor, type){
     if($("#"+newPosition).css("background-color") === "rgb(0, 0, 17)"){
         if(type === "player"){
             player.position = newPosition
-        }else{
+        }else if(type === "computer"){
             computer.position = newPosition
+        }else if(type === "computerB"){
+            computerB.position = newPosition
+        }else{
+            computerC.position = newPosition
         }
         $("#"+position).css("background-color", trailColor);
         $("#"+newPosition).css("background-color", color);
     }
     else{
-        status.game = "over"
+        if(type === "player"){
+            status.blue = 0
+        }else if(type === "computer"){
+            status.yellow = 0
+        }else if(type === "computerB"){
+            status.red = 0
+        }else{
+            status.green = 0
+        }
     }
 }
 
-function checkCollisions(position, direction){
+function checkCollisions(position, direction, type){
     if((position%100 === 0 && direction === -1) || (position%100 === 99 && direction === 1) || (position<100 && direction === -100) || (position>9999 && direction === 100)){
-        status.game = "over"
+        if(type === "player"){
+            status.blue = 0
+        }else if(type === "computer"){
+            status.yellow = 0
+        }else if(type === "computerB"){
+            status.red = 0
+        }else{
+            status.green = 0
+        }
     }
 }
 var newDirec = 0;
-function computerAI(){
+function computerAI(pos,dir,type){
     status.a += 1
     if(status.a > 50){
         status.a = 0
         var b = Math.floor(Math.random()*4)
         var ranDirec = (b === 0) ? -1 : (b === 1) ? 1 : (b === 2) ? 100 : -100
-        console.log("worksA")
-        console.log(ranDirec)
-        var possibleNextPos = computer.position + ranDirec
+        var possibleNextPos = pos + ranDirec
         if($("#"+possibleNextPos).css("background-color") === "rgb(0, 0, 17)"){
-            computer.direction = ranDirec
-            console.log("worksB")
+            if(type === "a"){
+                computer.direction = ranDirec
+            }else if(type ==="b"){
+                computerB.direction = ranDirec
+            }else{
+                computerC.direction = ranDirec
+            }
         }
     }
-    var newPos = computer.position + computer.direction
-    var aNewPos = newPos + computer.direction
-    var bNewPos = aNewPos + computer.direction
-    var cNewPos = bNewPos + computer.direction
-    var dNewPos = cNewPos + computer.direction
+    var newPos = pos + dir
+    var aNewPos = newPos + dir
+    var bNewPos = aNewPos + dir
+    var cNewPos = bNewPos + dir
+    var dNewPos = cNewPos + dir
     if($("#"+newPos).css("background-color") !== "rgb(0, 0, 17)" || $("#"+aNewPos).css("background-color") !== "rgb(0, 0, 17)" || $("#"+bNewPos).css("background-color") !== "rgb(0, 0, 17)" || $("#"+cNewPos).css("background-color") !== "rgb(0, 0, 17)" ||  $("#"+dNewPos).css("background-color") !== "rgb(0, 0, 17)"){
-        if(computer.direction%100 === 0){
+        if(dir%100 === 0){
             newDirec = (Math.random()-0.5 > 0) ? -1 : 1
-            possibleNewPos = computer.position + newDirec
+            possibleNewPos = pos + newDirec
             if($("#"+possibleNewPos).css("background-color") === "rgb(0, 0, 17)"){
-                computer.direction = newDirec
+                dir = newDirec
             }
             newDirec = -newDirec
-            possibleNewPos = computer.position + newDirec
+            possibleNewPos = pos + newDirec
             if($("#"+possibleNewPos).css("background-color") === "rgb(0, 0, 17)"){
-                computer.direction = newDirec
+                if(type === "a"){
+                    computer.direction = newDirec
+                }else if(type === "b"){
+                    computerB.direction = newDirec
+                }else{
+                    computerC.direction = newDirec
+                }
             }
         }
         else{
             newDirec = (Math.random()-0.5 > 0) ? -100 : 100
-            possibleNewPos = computer.position + newDirec
+            possibleNewPos = pos + newDirec
             if($("#"+possibleNewPos).css("background-color") === "rgb(0, 0, 17)"){
-                computer.direction = newDirec
+                if(type === "a"){
+                    computer.direction = newDirec
+                }else if(type ==="b"){
+                    computerB.direction = newDirec
+                }else{
+                    computerC.direction = newDirec
+                }
             }
             newDirec = -newDirec
             possibleNewPos = computer.position + newDirec
             if($("#"+possibleNewPos).css("background-color") === "rgb(0, 0, 17)"){
-                computer.direction = newDirec
+                if(type === "a"){
+                    computer.direction = newDirec
+                }else if(type ==="b"){
+                    computerB.direction = newDirec
+                }else{
+                    computerC.direction = newDirec
+                }
             }
         }
     }
@@ -109,38 +168,87 @@ function computerAI(){
         var down = computer.position+100
         var right = computer.position+1
         if($("#"+down).css("background-color") === "rgb(0, 0, 17)" && status.lastTurnUp === true && down !== newPos){
-            computer.direction = 100
-            status.lastTurnUp = false;
+            if(type === "a"){
+                computer.direction = 100
+                status.lastTurnUp = false;
+            }else if(type === "b"){
+                computerB.direction = 100
+                status.lastTurnUpB = false;
+            }else{
+                computerC.direction = 100
+                status.lastTurnUpC = false;
+            }
         }
         else if($("#"+left).css("background-color") === "rgb(0, 0, 17)" && left !== newPos){
-            computer.direction = -1
+            if(type === "a"){
+                computer.direction = -1
+            }else if(type === "b"){
+                computerB.direction = -1
+            }else{
+                computerC.direction = -1
+            }
         }
         else if($("#"+up).css("background-color") === "rgb(0, 0, 17)" && up !== newPos){
-            computer.direction = -100
-            status.lastTurnUp = true;
+            if(type === "a"){
+                computer.direction = -100
+                status.lastTurnUp = true;
+            }else if(type === "b"){
+                computerB.direction = -100
+                status.lastTurnUpB = true;
+            }else{
+                computerC.direction = -100
+                status.lastTurnUpC = true;
+            }
         }
         else if($("#"+right).css("background-color") === "rgb(0, 0, 17)" && right !== newPos){
-            computer.direction = 1
+            if(type === "a"){
+                computer.direction = 1
+            }else if(type === "b"){
+                computerB.direction = 1
+            }else{
+                computerC.direction = 1
+            }
         }
         //this last line is to make sure that when the last turn was up but the case to turn down is the only one to evaulate true the bike can still turn down 
         else if($("#"+down).css("background-color") === "rgb(0, 0, 17)"){
-            computer.direction = 100
-            status.lastTurnUp = false;
+            if(type === "a"){
+                computer.direction = 100
+                status.lastTurnUp = false;
+            }else if(type === "b"){
+                computerB.direction = 100
+                status.lastTurnUpB = false;
+            }else{
+                computerC.direction = 100
+                status.lastTurnUpC = false;
+            }
         }
         else{
-            status.game = "over"
+            if(type === "player"){
+            status.blue = 0
+        }else if(type === "computer"){
+            status.yellow = 0
+        }else if(type === "computerB"){
+            status.red = 0
+        }else{
+            status.green = 0
+        }
         }
     }
 }
 
-
 function game(){
-    if(status.game==="inProgress"){
+    if((status.blue+status.green+status.red+status.yellow)>1){
         draw(player.position, player.direction, player.color, player.trailColor, "player")
         draw(computer.position, computer.direction, computer.color, computer.trailColor, "computer")
-        checkCollisions(player.position, player.direction)
-        checkCollisions(computer.position, computer.direction)
-        computerAI()
+        draw(computerB.position, computerB.direction, computerB.color, computerB.trailColor, "computerB")
+        draw(computerC.position, computerC.direction, computerC.color, computerC.trailColor, "computerC")
+        checkCollisions(player.position, player.direction, "player")
+        checkCollisions(computer.position, computer.direction, "computer")
+        checkCollisions(computerB.position, computerB.direction, "computerB")
+        checkCollisions(computerC.position, computerC.direction, "computerC")
+        computerAI(computer.position, computer.direction, "a")
+        computerAI(computerB.position, computerB.direction, "b")
+        computerAI(computerC.position, computerC.direction, "c")
     }
 }
 setInterval(game,100)
@@ -167,9 +275,14 @@ function keyPressed(e){
     else if(key == " ") {
         e.preventDefault();
         resetGrid()
-        status.game = "inProgress"
+        status.blue = 1
+        status.red = 1
+        status.green = 1
+        status.yellow = 1
         computer.position = 7980
         player.position = 2020
+        computerB.position = 7920
+        computerC.position = 2080
         status.a = 51
     }
   }

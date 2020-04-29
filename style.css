@@ -12,3 +12,13 @@
     float:left;
     background-color: #001;
 }
+#table{
+    position: absolute;
+    left: calc(50vw - 300px);
+    bottom: 2vh;
+}
+#title{
+    position: absolute;
+    left: calc(50vw - 100px);
+    top:50px;
+}
