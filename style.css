@@ -7,8 +7,8 @@
 .cell{
     border-right: 1px solid #003;
     border-bottom: 1px solid #004;
-    height: 7px;
-    width: 7px;
+    height: 5px;
+    width: 5px;
     float:left;
     background-color: #001;
 }
