@@ -1,24 +1,21 @@
 #grid{
-    width:800px;
-    height:800px;
+    width:100vh;
+    height:100vh;
     top:1px solid #004;
     left:1px solid #004;
 }
 .cell{
     border-right: 1px solid #003;
     border-bottom: 1px solid #004;
-    height: 7px;
-    width: 7px;
+    height: calc(1vh - 1px);
+    width: calc(1vh - 1px);
     float:left;
     background-color: #001;
 }
 #table{
     position: absolute;
-    left: calc(50vw - 400px);
-    bottom: 2vh;
+    left: calc(50vw - 50vh);
 }
-#title{
-    position: absolute;
-    left: calc(50vw - 100px);
-    top:50px;
+html{
+    background-color:#000014
 }
