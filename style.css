@@ -32,3 +32,25 @@ html{
     text-shadow: -4px -4px 6px #0892d0, 4px 4px 6px #0892d0, -4px 4px 6px #0892d0, 4px -4px 6px #0892d0;
   /* -webkit-text-stroke: 1.3px #000; */
 }
+#lightbikes{
+    position: absolute;
+    top: calc(50vh - 330px);
+    left: calc(54vw + 50vh);
+    color: #7DF9FF;
+    font-size: 90px;
+    font-family: 'TRON', sans-serif;
+    text-orientation: upright;
+    letter-spacing: -150px;
+}
+#blue{
+    color: #0000FF
+}
+#yellow{
+    color: #FFFF00
+}
+#red{
+    color: #FF0000
+}
+#green{
+    color: #00FF00
+}

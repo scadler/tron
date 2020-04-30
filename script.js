@@ -88,12 +88,16 @@ function draw(position, direction, color, trailColor, type, state){
         status.remaining -= 1;
         if(type === "player"){
             player.status = 0
+            changeLightbikeColor(type)
         }else if(type === "computer"){
             computer.status = 0
+            changeLightbikeColor(type)
         }else if(type === "computerB"){
             computerB.status = 0
+            changeLightbikeColor(type)
         }else if(type === "computerC"){
             computerC.status = 0
+            changeLightbikeColor(type)
         }
         status.remaining = computer.status+computerB.status + computerC.status
     }
@@ -105,12 +109,16 @@ function checkCollisions(position, direction, type){
         status.remaining -= 1;
         if(type === "player"){
             player.status = 0
+            changeLightbikeColor(type)
         }else if(type === "computer"){
             computer.status = 0
+            changeLightbikeColor(type)
         }else if(type === "computerB"){
             computerB.status = 0
+            changeLightbikeColor(type)
         }else if(type === "computerC"){
             computerC.status = 0
+            changeLightbikeColor(type)
         }
         status.remaining = computer.status+computerB.status + computerC.status
     }
@@ -244,19 +252,49 @@ function computerAI(pos,dir,type){
         }
         else{
             if(type === "player"){
+            changeLightbikeColor(type)
             player.status = 0
         }else if(type === "computer"){
+            changeLightbikeColor(type)
             computer.status = 0
         }else if(type === "computerB"){
+            changeLightbikeColor(type)
             computerB.status = 0
         }else if(type === "computerC"){
+            changeLightbikeColor(type)
             computerC.status = 0
         }
         status.remaining = computer.status+computerB.status + computerC.status
         }
     }
 }
-
+function changeLightbikeColor(type){
+    if(type ==="player"){
+        $("#blue").css("color","#000011")
+    }else if(type === "computer"){
+        $("#yellow").css("color","#000011")
+    }else if(type === "computerB"){
+        $("#red").css("color","#000011")
+    }else if(type === "computerC"){
+        $("#green").css("color","#000011")
+    }
+}
+function resetGame(){
+    status.remaining = 3
+    player.status = 1
+    computerC.status = 1
+    computerB.status = 1
+    computer.status = 1
+    computer.position = 7980
+    player.position = 2020
+    computerB.position = 7920
+    computerC.position = 2080
+    status.a = 51
+    $("#blue").css("color","#0000FF")
+    $("#yellow").css("color","#FFFF00")
+    $("#red").css("color","#FF0000")
+    $("#green").css("color","#00FF00")
+}
 function game(){
     if(player.status === 1 && status.remaining !== 0){
         draw(player.position, player.direction, player.color, player.trailColor, "player", player.status)
@@ -296,17 +334,6 @@ function keyPressed(e){
     else if(key == " ") {
         e.preventDefault();
         resetGrid()
-        status.remaining = 3
-        player.status = 1
-        computerC.status = 1
-        computerB.status = 1
-        computer.status = 1
-        computer.position = 7980
-        player.position = 2020
-        computerB.position = 7920
-        computerC.position = 2080
-        status.a = 51
-    }
+        resetGame()
   }
-function keyUp(){
 }
