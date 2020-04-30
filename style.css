@@ -17,5 +17,18 @@
     left: calc(50vw - 50vh);
 }
 html{
-    background-color:#000014
+    background-color:#001
+}
+#title{
+    position: absolute;
+    top: calc(50vh - 250px);
+    left: calc(15vh - 40px);
+    color: #7DF9FF;
+    font-size: 90px;
+    font-family: 'TRON', sans-serif;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    letter-spacing: -50px;
+    text-shadow: -4px -4px 6px #0892d0, 4px 4px 6px #0892d0, -4px 4px 6px #0892d0, 4px -4px 6px #0892d0;
+  /* -webkit-text-stroke: 1.3px #000; */
 }

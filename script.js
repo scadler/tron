@@ -83,7 +83,7 @@ function draw(position, direction, color, trailColor, type, state){
             computer.status = 0
         }else if(type === "computerB"){
             computerB.status = 0
-        }else{
+        }else if(type === "computerC"){
             computerC.status = 0
         }
         status.remaining = computer.status+computerB.status + computerC.status
@@ -100,7 +100,7 @@ function checkCollisions(position, direction, type){
             computer.status = 0
         }else if(type === "computerB"){
             computerB.status = 0
-        }else{
+        }else if(type === "computerC"){
             computerC.status = 0
         }
         status.remaining = computer.status+computerB.status + computerC.status
@@ -240,7 +240,7 @@ function computerAI(pos,dir,type){
             computer.status = 0
         }else if(type === "computerB"){
             computerB.status = 0
-        }else{
+        }else if(type === "computerC"){
             computerC.status = 0
         }
         status.remaining = computer.status+computerB.status + computerC.status
