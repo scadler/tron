@@ -13,7 +13,7 @@ const status = {
     nearWall:false,
     a : 51,
     b : 51,
-    remaining : 4,
+    remaining : 3,
 }
 var player = {
     position: 2020,
@@ -86,6 +86,7 @@ function draw(position, direction, color, trailColor, type, state){
         }else{
             computerC.status = 0
         }
+        status.remaining = computer.status+computerB.status + computerC.status
     }
 }
 }
@@ -102,6 +103,7 @@ function checkCollisions(position, direction, type){
         }else{
             computerC.status = 0
         }
+        status.remaining = computer.status+computerB.status + computerC.status
     }
 }
 var newDirec = 0;
@@ -232,7 +234,6 @@ function computerAI(pos,dir,type){
             }
         }
         else{
-            status.remaining -= 1;
             if(type === "player"){
             player.status = 0
         }else if(type === "computer"){
@@ -242,12 +243,13 @@ function computerAI(pos,dir,type){
         }else{
             computerC.status = 0
         }
+        status.remaining = computer.status+computerB.status + computerC.status
         }
     }
 }
 
 function game(){
-    if(player.status === 1){
+    if(player.status === 1 && status.remaining !== 0){
         draw(player.position, player.direction, player.color, player.trailColor, "player", player.status)
         draw(computer.position, computer.direction, computer.color, computer.trailColor, "computer", computer.status)
         draw(computerB.position, computerB.direction, computerB.color, computerB.trailColor, "computerB", computerB.status)
@@ -285,7 +287,7 @@ function keyPressed(e){
     else if(key == " ") {
         e.preventDefault();
         resetGrid()
-        status.remaining = 4
+        status.remaining = 3
         player.status = 1
         computerC.status = 1
         computerB.status = 1

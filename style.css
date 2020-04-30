@@ -5,8 +5,8 @@
     left:1px solid #004;
 }
 .cell{
-    border-right: 1px solid #003;
-    border-bottom: 1px solid #004;
+    border-right: 1px solid #00001b;
+    border-bottom: 1px solid #00001b;
     height: calc(1vh - 1px);
     width: calc(1vh - 1px);
     float:left;
