@@ -12,31 +12,36 @@ const status = {
     lastTurnUpC : true,
     nearWall:false,
     a : 51,
-    b : 51
+    b : 51,
+    remaining : 4,
 }
 var player = {
     position: 2020,
     color : "#8888FF",
     trailColor : "#0000FF",
     direction : 1,
+    status : 1,
 }
 var computer = {
     position: 7980 ,
     color : "#FFFF88",
     trailColor : "#FFFF00",
     direction : -1,
+    status : 1,
 }
 var computerB = {
     position: 7920 ,
     color : "#FF8888",
     trailColor : "#FF0000",
     direction : -100,
+    status : 1,
 }
 var computerC = {
     position: 2080 ,
     color : "#88FF88",
     trailColor : "#00FF00",
     direction : 100,
+    status : 1,
 }
 function createGrid(){
     var i = 0;
@@ -54,7 +59,8 @@ function createGrid(){
 }
 createGrid();
 
-function draw(position, direction, color, trailColor, type){
+function draw(position, direction, color, trailColor, type, state){
+    if(state === 1){
     var newPosition = position + direction
     if($("#"+newPosition).css("background-color") === "rgb(0, 0, 17)"){
         if(type === "player"){
@@ -70,28 +76,31 @@ function draw(position, direction, color, trailColor, type){
         $("#"+newPosition).css("background-color", color);
     }
     else{
+        status.remaining -= 1;
         if(type === "player"){
-            status.blue = 0
+            player.status = 0
         }else if(type === "computer"){
-            status.yellow = 0
+            computer.status = 0
         }else if(type === "computerB"){
-            status.red = 0
+            computerB.status = 0
         }else{
-            status.green = 0
+            computerC.status = 0
         }
     }
+}
 }
 
 function checkCollisions(position, direction, type){
     if((position%100 === 0 && direction === -1) || (position%100 === 99 && direction === 1) || (position<100 && direction === -100) || (position>9999 && direction === 100)){
+        status.remaining -= 1;
         if(type === "player"){
-            status.blue = 0
+            player.status = 0
         }else if(type === "computer"){
-            status.yellow = 0
+            computer.status = 0
         }else if(type === "computerB"){
-            status.red = 0
+            computerB.status = 0
         }else{
-            status.green = 0
+            computerC.status = 0
         }
     }
 }
@@ -223,25 +232,26 @@ function computerAI(pos,dir,type){
             }
         }
         else{
+            status.remaining -= 1;
             if(type === "player"){
-            status.blue = 0
+            player.status = 0
         }else if(type === "computer"){
-            status.yellow = 0
+            computer.status = 0
         }else if(type === "computerB"){
-            status.red = 0
+            computerB.status = 0
         }else{
-            status.green = 0
+            computerC.status = 0
         }
         }
     }
 }
 
 function game(){
-    if((status.blue+status.green+status.red+status.yellow)>1){
-        draw(player.position, player.direction, player.color, player.trailColor, "player")
-        draw(computer.position, computer.direction, computer.color, computer.trailColor, "computer")
-        draw(computerB.position, computerB.direction, computerB.color, computerB.trailColor, "computerB")
-        draw(computerC.position, computerC.direction, computerC.color, computerC.trailColor, "computerC")
+    if(status.remaining>1){
+        draw(player.position, player.direction, player.color, player.trailColor, "player", player.status)
+        draw(computer.position, computer.direction, computer.color, computer.trailColor, "computer", computer.status)
+        draw(computerB.position, computerB.direction, computerB.color, computerB.trailColor, "computerB", computerB.status)
+        draw(computerC.position, computerC.direction, computerC.color, computerC.trailColor, "computerC", computerC.status)
         checkCollisions(player.position, player.direction, "player")
         checkCollisions(computer.position, computer.direction, "computer")
         checkCollisions(computerB.position, computerB.direction, "computerB")
@@ -275,10 +285,11 @@ function keyPressed(e){
     else if(key == " ") {
         e.preventDefault();
         resetGrid()
-        status.blue = 1
-        status.red = 1
-        status.green = 1
-        status.yellow = 1
+        status.remaining = 4
+        player.status = 1
+        computerC.status = 1
+        computerB.status = 1
+        computer.status = 1
         computer.position = 7980
         player.position = 2020
         computerB.position = 7920
