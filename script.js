@@ -50,6 +50,7 @@ function createGrid(){
         i++
     }
     var i = 0
+    // createObstacles()
     while(i < 10000){
         if(i<100 || i>9899 || i%100 == 0 || i%100 === 99){
             $("#"+i).css("background-color","#0000a0")
@@ -57,6 +58,14 @@ function createGrid(){
         i++
     }
 }
+// function createObstacles(){
+//     var counter = 0
+//     while(counter < 100){
+//         var id = Math.floor(Math.random()*10000)
+//         $("#"+id).css("background-color","#0000a0")
+//         counter++
+//     }
+// }
 createGrid();
 
 function draw(position, direction, color, trailColor, type, state){
