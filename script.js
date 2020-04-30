@@ -247,7 +247,7 @@ function computerAI(pos,dir,type){
 }
 
 function game(){
-    if(status.remaining>1){
+    if(player.status === 1){
         draw(player.position, player.direction, player.color, player.trailColor, "player", player.status)
         draw(computer.position, computer.direction, computer.color, computer.trailColor, "computer", computer.status)
         draw(computerB.position, computerB.direction, computerB.color, computerB.trailColor, "computerB", computerB.status)
