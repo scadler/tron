@@ -86,7 +86,6 @@ function draw(position, direction, color, trailColor, type, state){
         }
         $("#"+position).css("background-color", trailColor);
         $("#"+newPosition).css("background-color", color);
-        $("#"+position).addClass(type+"Trail")
         $("#"+newPosition).addClass(type)
     }
     else{
@@ -274,21 +273,27 @@ function computerAI(pos,dir,type){
     }
 }
 function changeLightbikeColor(type, position){
-    $("#2020").addClass("player")
-    $("#7980").addClass("computer")
-    $("#7920").addClass("computerB")
-    $("#2080").addClass("computerC")
+    $("."+type).addClass(type+"Trail")
+    $("#"+position).addClass(type+"Trail")
+    $("#2020").addClass("playerTrail")
+    $("#7980").addClass("computertTail")
+    $("#7920").addClass("computerBTrail")
+    $("#2080").addClass("computerCTrail")
     $(`.${type}`).css("background-color","#000011")
     if(type ==="player"){
+        $("#2020").css("background-color","#000011")
         $("#"+position).addClass("playertrail")
         $("#blue").css("color","#000011")
     }else if(type === "computer"){
+        $("#7980").css("background-color","#000011")
         $("#"+position).addClass("computertrail")
         $("#yellow").css("color","#000011")
     }else if(type === "computerB"){
+        $("#7920").css("background-color","#000011")
         $("#"+position).addClass("computerBtrail")
         $("#red").css("color","#000011")
     }else if(type === "computerC"){
+        $("#2080").css("background-color","#000011")
         $("#"+position).addClass("computerCtrail")
         $("#green").css("color","#000011")
     }
