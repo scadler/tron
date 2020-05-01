@@ -33,19 +33,23 @@
 #table{
     position: absolute;
     left: calc(50vw - 50vh);
+    top:0vh;
 }
 html{
     background-color:#001
 }
 #title{
     position: absolute;
-    top: calc(50vh - 250px);
-    left: 3vh;
+    top: 3vh;
+    left: calc(50vw + 50vh);
     color: #7DF9FF;
     font-size: 50px;
     font-family: 'TRON', sans-serif;
     text-orientation: upright;
     text-shadow: -4px -4px 6px #0892d0, 4px 4px 6px #0892d0, -4px 4px 6px #0892d0, 4px -4px 6px #0892d0;
+    width: calc(100vw - calc(50vw + 50vh));
+    display: flex;
+    justify-content: center;
 }
     /* text-shadow: -1px -1px 1px #0892d0, 1px 1px 1px #0892d0, -1px 1px 1px #0892d0, 1px -1px 1px #0892d0; */
 #obstacleButton{
@@ -58,12 +62,11 @@ html{
 }
 #lightbikes{
     position: absolute;
-    top: 10vh;
+    top: 15vh;
     left: calc(50vw + 50vh);
     height: 30vh;
     width: calc(100vw - calc(50vw + 50vh));
     font-family: 'TRON', sans-serif;
-    text-orientation: upright;
 }
 #blue{
     color: #0000FF;
@@ -92,8 +95,9 @@ html{
     top: calc(50vh - 90px);
     z-index:1000;
     width: 400px;
+    height: 200px;
     font-family: "G7 Silkworm TTF";
     color: #33C;
     font-size: 90px;
-    text-shadow: 0px 0px 3px #33C
+    text-shadow: 0px 0px 2px #33C
 }
