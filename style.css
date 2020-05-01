@@ -22,15 +22,25 @@ html{
 #title{
     position: absolute;
     top: calc(50vh - 250px);
-    left: calc(15vh - 40px);
+    left: 3vh;
     color: #7DF9FF;
-    font-size: 90px;
+    font-size: 50px;
     font-family: 'TRON', sans-serif;
-    writing-mode: vertical-lr;
+    /* writing-mode: vertical-lr; */
     text-orientation: upright;
-    letter-spacing: -50px;
+    /* letter-spacing: -50px; */
     text-shadow: -4px -4px 6px #0892d0, 4px 4px 6px #0892d0, -4px 4px 6px #0892d0, 4px -4px 6px #0892d0;
   /* -webkit-text-stroke: 1.3px #000; */
+}
+#rules{
+    font-size: 15px;
+    font-family: 'Sarpanch', sans-serif;
+    color: #7DF9FF;
+    width:200px;
+    position: absolute;
+    left: 4vh;
+    /* text-shadow: -1px -1px 1px #0892d0, 1px 1px 1px #0892d0, -1px 1px 1px #0892d0, 1px -1px 1px #0892d0; */
+    top: calc(50vh - 160px);
 }
 #obstacleButton{
     color: #7DF9FF;
@@ -61,4 +71,7 @@ html{
 }
 #green{
     color: #00FF00
+}
+.player{
+    transition: 1s;
 }

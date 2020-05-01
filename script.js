@@ -14,7 +14,7 @@ const status = {
     a : 51,
     b : 51,
     remaining : 3,
-    obstacles : true,
+    obstacles : false,
 }
 var player = {
     position: 2020,
@@ -52,7 +52,7 @@ function createGrid(){
     }
     var i = 0
     if(status.obstacles === true){
-        createObstacles()
+        // createObstacles()
     }
     while(i < 10000){
         if(i<100 || i>9899 || i%100 == 0 || i%100 === 99){
@@ -86,6 +86,8 @@ function draw(position, direction, color, trailColor, type, state){
         }
         $("#"+position).css("background-color", trailColor);
         $("#"+newPosition).css("background-color", color);
+        $("#"+position).addClass(type)
+        $("#"+newPosition).addClass(type)
     }
     else{
         status.remaining -= 1;
@@ -272,6 +274,7 @@ function computerAI(pos,dir,type){
     }
 }
 function changeLightbikeColor(type){
+    $(`.${type}`).css("background-color","#000011")
     if(type ==="player"){
         $("#blue").css("color","#000011")
     }else if(type === "computer"){
@@ -319,7 +322,6 @@ function resetGrid(){
     createGrid();
 }
 document.addEventListener('keydown', keyPressed)
-document.addEventListener('keyup', keyUp)
 function keyPressed(e){
     key = e.key
     if (key == "a") {
