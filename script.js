@@ -44,7 +44,11 @@ var computerC = {
     direction : 100,
     status : 1,
 }
+function resetText(){
+    $("#gameOverText").hide();
+}
 function createGrid(){
+    resetText()
     var i = 0;
     while(i < 10000){
         $("#grid").append(`<div class="cell" id=${i}></div>`);
@@ -87,6 +91,7 @@ function draw(position, direction, color, trailColor, type, state){
         $("#"+position).css("background-color", trailColor);
         $("#"+newPosition).css("background-color", color);
         $("#"+newPosition).addClass(type)
+        $("#"+position).addClass(type+"Trail")
     }
     else{
         status.remaining -= 1;
@@ -279,7 +284,8 @@ function changeLightbikeColor(type, position){
     $("#7980").addClass("computertTail")
     $("#7920").addClass("computerBTrail")
     $("#2080").addClass("computerCTrail")
-    $(`.${type}`).css("background-color","#000011")
+    var typeTrail = type+"Trail"
+    $(`.${typeTrail}`).css("background-color","#000011")
     if(type ==="player"){
         $("#2020").css("background-color","#000011")
         $("#"+position).addClass("playertrail")
@@ -296,6 +302,9 @@ function changeLightbikeColor(type, position){
         $("#2080").css("background-color","#000011")
         $("#"+position).addClass("computerCtrail")
         $("#green").css("color","#000011")
+    }
+    if(player.status !== 1 || status.remaining === 0){
+        $("#gameOverText").show();
     }
 }
 function resetGame(){

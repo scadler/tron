@@ -1,3 +1,21 @@
+@font-face {
+    font-family: "Computer Pixel-7";
+    src: url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.eot"); 
+    src: url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.svg#Computer Pixel-7") format("svg");
+}
+@font-face {
+    font-family: "G7 Silkworm TTF";
+    src: url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.eot");
+    src: url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.svg#G7 Silkworm TTF") format("svg");
+    }
 #grid{
     width:100vh;
     height:100vh;
@@ -32,7 +50,7 @@ html{
     text-shadow: -4px -4px 6px #0892d0, 4px 4px 6px #0892d0, -4px 4px 6px #0892d0, 4px -4px 6px #0892d0;
   /* -webkit-text-stroke: 1.3px #000; */
 }
-#rules{
+/* #rules{
     font-size: 15px;
     font-family: 'Sarpanch', sans-serif;
     color: #7DF9FF;
@@ -40,8 +58,8 @@ html{
     position: absolute;
     left: 4vh;
     /* text-shadow: -1px -1px 1px #0892d0, 1px 1px 1px #0892d0, -1px 1px 1px #0892d0, 1px -1px 1px #0892d0; */
-    top: calc(50vh - 160px);
-}
+    /* top: calc(50vh - 160px); */
+/* } */
 #obstacleButton{
     color: #7DF9FF;
     font-size: 30px;
@@ -71,4 +89,17 @@ html{
 }
 #green{
     color: #00FF00
+}
+#gameOverDiv{
+    position: absolute;
+    left: calc(50vw - 175px);
+    top: calc(50vh - 90px);
+    z-index:1000;
+    display:flex;
+    justify-content:center;
+}
+#gameOverText{
+    font-family: "G7 Silkworm TTF";
+    color: #2B2BFF;
+    font-size: 90px;
 }
