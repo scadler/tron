@@ -72,6 +72,15 @@ html{
 #green{
     color: #00FF00
 }
-.player{
+.playertrail{
+    transition: 1s;
+}
+.computerTrail{
+    transition: 1s;
+}
+.computerBTrail{
+    transition: 1s;
+}
+.computerCTrail{
     transition: 1s;
 }

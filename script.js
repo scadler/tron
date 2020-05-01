@@ -86,23 +86,23 @@ function draw(position, direction, color, trailColor, type, state){
         }
         $("#"+position).css("background-color", trailColor);
         $("#"+newPosition).css("background-color", color);
-        $("#"+position).addClass(type)
+        $("#"+position).addClass(type+"Trail")
         $("#"+newPosition).addClass(type)
     }
     else{
         status.remaining -= 1;
         if(type === "player"){
             player.status = 0
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
         }else if(type === "computer"){
             computer.status = 0
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
         }else if(type === "computerB"){
             computerB.status = 0
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
         }else if(type === "computerC"){
             computerC.status = 0
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
         }
         status.remaining = computer.status+computerB.status + computerC.status
     }
@@ -114,16 +114,16 @@ function checkCollisions(position, direction, type){
         status.remaining -= 1;
         if(type === "player"){
             player.status = 0
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
         }else if(type === "computer"){
             computer.status = 0
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
         }else if(type === "computerB"){
             computerB.status = 0
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
         }else if(type === "computerC"){
             computerC.status = 0
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
         }
         status.remaining = computer.status+computerB.status + computerC.status
     }
@@ -257,31 +257,39 @@ function computerAI(pos,dir,type){
         }
         else{
             if(type === "player"){
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
             player.status = 0
         }else if(type === "computer"){
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
             computer.status = 0
         }else if(type === "computerB"){
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
             computerB.status = 0
         }else if(type === "computerC"){
-            changeLightbikeColor(type)
+            changeLightbikeColor(type, position)
             computerC.status = 0
         }
         status.remaining = computer.status+computerB.status + computerC.status
         }
     }
 }
-function changeLightbikeColor(type){
+function changeLightbikeColor(type, position){
+    $("#2020").addClass("player")
+    $("#7980").addClass("computer")
+    $("#7920").addClass("computerB")
+    $("#2080").addClass("computerC")
     $(`.${type}`).css("background-color","#000011")
     if(type ==="player"){
+        $("#"+position).addClass("playertrail")
         $("#blue").css("color","#000011")
     }else if(type === "computer"){
+        $("#"+position).addClass("computertrail")
         $("#yellow").css("color","#000011")
     }else if(type === "computerB"){
+        $("#"+position).addClass("computerBtrail")
         $("#red").css("color","#000011")
     }else if(type === "computerC"){
+        $("#"+position).addClass("computerCtrail")
         $("#green").css("color","#000011")
     }
 }
