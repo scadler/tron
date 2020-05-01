@@ -44,22 +44,10 @@ html{
     color: #7DF9FF;
     font-size: 50px;
     font-family: 'TRON', sans-serif;
-    /* writing-mode: vertical-lr; */
     text-orientation: upright;
-    /* letter-spacing: -50px; */
     text-shadow: -4px -4px 6px #0892d0, 4px 4px 6px #0892d0, -4px 4px 6px #0892d0, 4px -4px 6px #0892d0;
-  /* -webkit-text-stroke: 1.3px #000; */
 }
-/* #rules{
-    font-size: 15px;
-    font-family: 'Sarpanch', sans-serif;
-    color: #7DF9FF;
-    width:200px;
-    position: absolute;
-    left: 4vh;
     /* text-shadow: -1px -1px 1px #0892d0, 1px 1px 1px #0892d0, -1px 1px 1px #0892d0, 1px -1px 1px #0892d0; */
-    /* top: calc(50vh - 160px); */
-/* } */
 #obstacleButton{
     color: #7DF9FF;
     font-size: 30px;
@@ -70,36 +58,42 @@ html{
 }
 #lightbikes{
     position: absolute;
-    top: calc(50vh - 330px);
-    left: calc(54vw + 50vh);
-    color: #7DF9FF;
-    font-size: 90px;
+    top: 10vh;
+    left: calc(50vw + 50vh);
+    height: 30vh;
+    width: calc(100vw - calc(50vw + 50vh));
     font-family: 'TRON', sans-serif;
     text-orientation: upright;
-    letter-spacing: -150px;
 }
 #blue{
-    color: #0000FF
+    color: #0000FF;
 }
 #yellow{
-    color: #FFFF00
+    color: #FFFF00;
 }
 #red{
-    color: #FF0000
+    color: #FF0000;
 }
 #green{
-    color: #00FF00
+    color: #00FF00;
 }
-#gameOverDiv{
+.bike{
+    font-size: 65px;
+}
+.bikeClass{
+    width: calc(100vw - calc(50vw + 50vh));
+    height: 15vh;
+    display:flex;
+    justify-content: space-around;
+}
+#gameOverText{
     position: absolute;
     left: calc(50vw - 175px);
     top: calc(50vh - 90px);
     z-index:1000;
-    display:flex;
-    justify-content:center;
-}
-#gameOverText{
+    width: 400px;
     font-family: "G7 Silkworm TTF";
-    color: #2B2BFF;
+    color: #33C;
     font-size: 90px;
+    text-shadow: 0px 0px 3px #33C
 }

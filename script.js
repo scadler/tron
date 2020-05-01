@@ -347,16 +347,28 @@ document.addEventListener('keydown', keyPressed)
 function keyPressed(e){
     key = e.key
     if (key == "a") {
-        player.direction = -1
+        var possiblePos = player.position-1
+        if($("#"+possiblePos).css("background-color") === "rgb(0, 0, 17)"){
+            player.direction = -1
+        }
     }
     else if(key == "d"){
-        player.direction = 1
+        var possiblePos = player.position+1
+        if($("#"+possiblePos).css("background-color") === "rgb(0, 0, 17)"){
+            player.direction = 1
+        }
     }
     else if (key == "w") {
-        player.direction = -100
+        var possiblePos = player.position-100
+        if($("#"+possiblePos).css("background-color") === "rgb(0, 0, 17)"){
+            player.direction = -100
+        }
     }
     else if (key == "s") {
-        player.direction = 100
+        var possiblePos = player.position+100
+        if($("#"+possiblePos).css("background-color") === "rgb(0, 0, 17)"){
+            player.direction = 100
+        }
     }
     else if(key == " ") {
         e.preventDefault();
