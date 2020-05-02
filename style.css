@@ -167,9 +167,9 @@ html{
 #mainTitle::after{
     content : "";
     position: absolute;
-    left: 0;
-    bottom: -100px;
-    width: 120%;
+    left: -35px;
+    bottom: -30px;
+    width: 384px;
     height: 3px;
     border-radius: 15px;
     background : #7DF9FF;
