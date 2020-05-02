@@ -66,6 +66,17 @@ function createGrid(){
         }
         i++
     }
+    if(status.colorsRetro === false){
+        $(".cell").css({
+            "border-right": "1px solid #00001b",
+            "border-bottom": "1px solid #00001b",
+        })
+    }else{
+        $(".cell").css({
+            "border-right": "1px solid #111111",
+            "border-bottom": "1px solid #111111",
+        })
+    }
 }
 function createObstacles(){
     var counter = 0
@@ -411,12 +422,14 @@ $("#changeColors").click(function(){
     }
 });
 $("#obstacleButton").click(function(){
-    if(status.obstacles === false){
-        $("#obstacleSpan").text("Y")
-        status.obstacles = true
-    }
-    else if(status.obstacles === true){
-        $("#obstacleSpan").text("N")
-        status.obstacles = false
+    if(player.status !== 1 || status.remaining === 0){
+        if(status.obstacles === false){
+            $("#obstacleSpan").text("Y")
+            status.obstacles = true
+        }
+        else if(status.obstacles === true){
+            $("#obstacleSpan").text("N")
+            status.obstacles = false
+        }
     }
 })
