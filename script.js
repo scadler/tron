@@ -58,7 +58,7 @@ function createGrid(){
     }
     var i = 0
     if(status.obstacles === true){
-        // createObstacles()
+        createObstacles()
     }
     while(i < 10000){
         if(i<100 || i>9899 || i%100 == 0 || i%100 === 99){
@@ -355,26 +355,22 @@ document.addEventListener('keydown', keyPressed)
 function keyPressed(e){
     key = e.key
     if (key == "a") {
-        var possiblePos = player.position-1
-        if($("#"+possiblePos).css("background-color") === "rgb(0, 0, 17)"){
+        if(player.direction !== 1){
             player.direction = -1
         }
     }
     else if(key == "d"){
-        var possiblePos = player.position+1
-        if($("#"+possiblePos).css("background-color") === "rgb(0, 0, 17)"){
+        if(player.direction !== -1){
             player.direction = 1
         }
     }
     else if (key == "w") {
-        var possiblePos = player.position-100
-        if($("#"+possiblePos).css("background-color") === "rgb(0, 0, 17)"){
+        if(player.direction !== 100){
             player.direction = -100
         }
     }
     else if (key == "s") {
-        var possiblePos = player.position+100
-        if($("#"+possiblePos).css("background-color") === "rgb(0, 0, 17)"){
+        if(player.direction !== -100){
             player.direction = 100
         }
     }
@@ -387,7 +383,7 @@ function keyPressed(e){
 $("#changeColors").click(function(){
     if(player.status !== 1 || status.remaining === 0){
         if(status.colorsRetro === false){
-            $("#buttonText").text("NEW COLORS")
+            $("#buttonText").text("Y")
             status.colorsRetro = true
             computer.trailColor = "#FDDA47"
             computer.color = "#BB8924"
@@ -400,7 +396,7 @@ $("#changeColors").click(function(){
             player.wallColor = "#6A908D"
         }
         else if(status.colorsRetro === true){
-            $("#buttonText").text("RETRO COLORS")
+            $("#buttonText").text("N")
             status.colorsRetro = false,
             computer.trailColor = "#FFFF00"
             computer.color = "#FFFF88"
@@ -414,3 +410,13 @@ $("#changeColors").click(function(){
         }
     }
 });
+$("#obstacleButton").click(function(){
+    if(status.obstacles === false){
+        $("#obstacleSpan").text("Y")
+        status.obstacles = true
+    }
+    else if(status.obstacles === true){
+        $("#obstacleSpan").text("N")
+        status.obstacles = false
+    }
+})
