@@ -51,19 +51,6 @@ html{
     display: flex;
     justify-content: center;
 }
-#title{
-    position: absolute;
-    top: 2vh;
-    left: calc(50vw + 50vh);
-    color: #7DF9FF;
-    font-size: 60px;
-    font-family: 'TRON', sans-serif;
-    text-orientation: upright;
-    text-shadow: -4px -4px 6px #0892d0, 4px 4px 6px #0892d0, -4px 4px 6px #0892d0, 4px -4px 6px #0892d0;
-    width: calc(50vw - 50vh);
-    display: flex;
-    justify-content: center;
-}
 #subtext{
     position: absolute;
     top: calc(2vh + 95px);
@@ -149,11 +136,11 @@ html{
     position: relative;
     transition: 0.4s;
     top: calc(2vh + 90px);
-    color: #7DF9FF;
+    color: #6CE8EE;
     font-size: 160px;
     font-family: 'TRON', sans-serif;
     text-orientation: upright;
-    text-shadow: -3px -3px 7px #0892d0, 3px 3px 7px #0892d0, -3px 3px 7px #0892d0, 3px -3px 7px #0892d0;
+    text-shadow: -3px -3px 7px #0082c0, 3px 3px 7px #0082c0, -3px 3px 7px #0082c0, 3px -3px 7px #0082c0;
     width: calc(50vw - 50vh);
     display: flex;
     justify-content: center;
@@ -161,6 +148,7 @@ html{
 #mainTitle:hover{
     opacity:1;
     font-size: 165px;
+    color: #7DF9FF;
     top: calc(2vh + 80px);
     text-shadow: -5px -5px 12px #0892d0, 5px 5px 12px #0892d0, -5px 5px 12px #0892d0, 5px -5px 12px #0892d0;
 }
@@ -172,7 +160,7 @@ html{
     width: 384px;
     height: 3px;
     border-radius: 15px;
-    background : #7DF9FF;
+    background : #8DF9FF;
     box-shadow: -3px -3px 7px #0892d0, 3px 3px 7px #0892d0, -3px 3px 7px #0892d0, 3px -3px 7px #0892d0;
     transform: scaleX(0);
     transform-origin : right;
@@ -192,5 +180,4 @@ html{
     text-shadow: -3px -3px 6px #0892d0, 3px 3px 6px #0892d0, -3px 3px 6px #0892d0, 3px -3px 6px #0892d0;
     display: flex;
     justify-content: center;
- 
 }
