@@ -13,6 +13,7 @@ const status = {
     nearWall:false,
     a : 51,
     b : 51,
+    colorsRetro : false,
     remaining : 3,
     obstacles : false,
 }
@@ -22,6 +23,7 @@ var player = {
     trailColor : "#0000FF",
     direction : 1,
     status : 1,
+    wallColor : "#0000a0",
 }
 var computer = {
     position: 7980 ,
@@ -45,7 +47,7 @@ var computerC = {
     status : 1,
 }
 function resetText(){
-    $("#gameOverText").hide();
+    $(".gameOverText").hide();
 }
 function createGrid(){
     resetText()
@@ -60,7 +62,7 @@ function createGrid(){
     }
     while(i < 10000){
         if(i<100 || i>9899 || i%100 == 0 || i%100 === 99){
-            $("#"+i).css("background-color","#0000a0")
+            $("#"+i).css("background-color",player.wallColor)
         }
         i++
     }
@@ -69,7 +71,7 @@ function createObstacles(){
     var counter = 0
     while(counter < 100){
         var id = Math.floor(Math.random()*10000)
-        $("#"+id).css("background-color","#0000a0")
+        $("#"+id).css("background-color",player.wallColor)
         counter++
     }
 }
@@ -135,7 +137,7 @@ function checkCollisions(position, direction, type){
 var newDirec = 0;
 function computerAI(pos,dir,type){
     status.a += 1
-    if(status.a > 50){
+    if(Math.random()-0.99 > 0){
         status.a = 0
         var b = Math.floor(Math.random()*4)
         var ranDirec = (b === 0) ? -1 : (b === 1) ? 1 : (b === 2) ? 100 : -100
@@ -303,11 +305,17 @@ function changeLightbikeColor(type, position){
         $("#"+position).addClass("computerCtrail")
         $("#green").css("color","#000011")
     }
-    if(player.status !== 1 || status.remaining === 0){
-        $("#gameOverText").show();
+    if(player.status !== 1){
+        $(".buttons").css("opacity","1");
+        $("#gameOver").show();
+    }
+    else if(status.remaining === 0){
+        $(".buttons").css("opacity","1");
+        $("#gameWon").show();
     }
 }
 function resetGame(){
+    $(".buttons").css("opacity","0.4")
     status.remaining = 3
     player.status = 1
     computerC.status = 1
@@ -318,10 +326,10 @@ function resetGame(){
     computerB.position = 7920
     computerC.position = 2080
     status.a = 51
-    $("#blue").css("color","#0000FF")
-    $("#yellow").css("color","#FFFF00")
-    $("#red").css("color","#FF0000")
-    $("#green").css("color","#00FF00")
+    $("#blue").css("color",player.trailColor)
+    $("#yellow").css("color",computer.trailColor)
+    $("#red").css("color",computerB.trailColor)
+    $("#green").css("color",computerC.trailColor)
 }
 function game(){
     if(player.status === 1 && status.remaining !== 0){
@@ -376,3 +384,33 @@ function keyPressed(e){
         resetGame()
   }
 }
+$("#changeColors").click(function(){
+    if(player.status !== 1 || status.remaining === 0){
+        if(status.colorsRetro === false){
+            $("#buttonText").text("NEW COLORS")
+            status.colorsRetro = true
+            computer.trailColor = "#FDDA47"
+            computer.color = "#BB8924"
+            player.trailColor = "#2A80DE"
+            player.color = "#2138A7"
+            computerB.trailColor = "#FDDA47"
+            computerB.color = "#BB8924"
+            computerC.trailColor = "#FDDA47"
+            computerC.color = "#BB8924"
+            player.wallColor = "#6A908D"
+        }
+        else if(status.colorsRetro === true){
+            $("#buttonText").text("RETRO COLORS")
+            status.colorsRetro = false,
+            computer.trailColor = "#FFFF00"
+            computer.color = "#FFFF88"
+            player.trailColor = "0000FF"
+            player.color = "#8888FF"
+            computerB.trailColor = "#FF0000"
+            computerB.color = "#FF8888"
+            computerC.trailColor = "#00FF00"
+            computerC.color = "#88FF88"
+            player.wallColor ="0000a0"
+        }
+    }
+});
