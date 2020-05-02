@@ -114,7 +114,6 @@ html{
     z-index:1000;
     width: 400px;
     height: 200px;
-    font-family: 'VT323', monospace;
     font-family: "G7 Silkworm TTF";
     color: #33C;
     font-size: 90px;
@@ -141,4 +140,57 @@ html{
 }
 #obstacleButton{
     top: 10vh;
+}
+#titleDiv{
+    display:flex;
+    justify-content:center;
+}
+#mainTitle{
+    position: relative;
+    transition: 0.4s;
+    top: calc(2vh + 90px);
+    color: #7DF9FF;
+    font-size: 160px;
+    font-family: 'TRON', sans-serif;
+    text-orientation: upright;
+    text-shadow: -3px -3px 7px #0892d0, 3px 3px 7px #0892d0, -3px 3px 7px #0892d0, 3px -3px 7px #0892d0;
+    width: calc(50vw - 50vh);
+    display: flex;
+    justify-content: center;
+}
+#mainTitle:hover{
+    opacity:1;
+    font-size: 165px;
+    top: calc(2vh + 80px);
+    text-shadow: -5px -5px 12px #0892d0, 5px 5px 12px #0892d0, -5px 5px 12px #0892d0, 5px -5px 12px #0892d0;
+}
+#mainTitle::after{
+    content : "";
+    position: absolute;
+    left: 0;
+    bottom: -100px;
+    width: 120%;
+    height: 3px;
+    border-radius: 15px;
+    background : #7DF9FF;
+    box-shadow: -3px -3px 7px #0892d0, 3px 3px 7px #0892d0, -3px 3px 7px #0892d0, 3px -3px 7px #0892d0;
+    transform: scaleX(0);
+    transform-origin : right;
+    transition:  transform 100ms linear;
+}
+#mainTitle:hover::after{
+    transform: scaleX(1);
+    transform-origin : left;
+}
+#mainSubtext{
+    position: absolute;
+    top: calc(2vh + 340px);
+    color: #7DF9FF;
+    font-size: 80px;
+    font-family: 'VT323', monospace;
+    text-orientation: upright;
+    text-shadow: -3px -3px 6px #0892d0, 3px 3px 6px #0892d0, -3px 3px 6px #0892d0, 3px -3px 6px #0892d0;
+    display: flex;
+    justify-content: center;
+ 
 }
