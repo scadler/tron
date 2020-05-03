@@ -80,9 +80,14 @@ function createGrid(){
 }
 function createObstacles(){
     var counter = 0
-    while(counter < 100){
+    while(counter < 200){
         var id = Math.floor(Math.random()*10000)
-        $("#"+id).css("background-color",player.wallColor)
+        if(id%100 < 14 || id%100 > 86 || id>8498 || id<1400){
+            $("#"+id).css("background-color",player.wallColor)
+        }
+        else if(id<7381 && id%100<75 && id>2619 && id%100>25){
+            $("#"+id).css("background-color",player.wallColor)
+        }
         counter++
     }
 }
