@@ -115,8 +115,8 @@ html{
 }
 .buttons{
     color: #7DF9FF;
-    font-size: 25px;
-    font-family: "G7 Silkworm TTF";
+    font-size: 40px;
+    font-family: 'VT323', monospace;
     position:absolute; 
     width: calc(50vw - 50vh);
     height:10vh;

@@ -13,7 +13,7 @@ const status = {
     nearWall:false,
     a : 51,
     b : 51,
-    colorsRetro : false,
+    colorsRetro : 1,
     remaining : 3,
     obstacles : false,
 }
@@ -66,15 +66,20 @@ function createGrid(){
         }
         i++
     }
-    if(status.colorsRetro === false){
+    if(status.colorsRetro === 1){
         $(".cell").css({
             "border-right": "1px solid #00001b",
             "border-bottom": "1px solid #00001b",
         })
-    }else{
+    }else if(status.colorsRetro === 2){
         $(".cell").css({
             "border-right": "1px solid #111111",
             "border-bottom": "1px solid #111111",
+        })
+    }else if(status.colorsRetro === 0){
+        $(".cell").css({
+            "border-right": "1px solid #000000",
+            "border-bottom": "1px solid #000000",
         })
     }
 }
@@ -398,9 +403,22 @@ function keyPressed(e){
 }
 $("#changeColors").click(function(){
     if(player.status !== 1 || status.remaining === 0){
-        if(status.colorsRetro === false){
-            $("#buttonText").text("Y")
-            status.colorsRetro = true
+        if(status.colorsRetro%3 === 0){
+            status.colorsRetro = 1
+            $("#buttonText").text("VIBRANT")
+            computer.trailColor = "#FFFF00"
+            computer.color = "#FFFF88"
+            player.trailColor = "0000FF"
+            player.color = "#8888FF"
+            computerB.trailColor = "#FF0000"
+            computerB.color = "#FF8888"
+            computerC.trailColor = "#00FF00"
+            computerC.color = "#88FF88"
+            player.wallColor ="0000a0"
+        }
+        else if(status.colorsRetro%3 === 1){
+            status.colorsRetro = 2
+            $("#buttonText").text("CLASSIC")
             computer.trailColor = "#FDDA47"
             computer.color = "#BB8924"
             player.trailColor = "#2A80DE"
@@ -411,18 +429,18 @@ $("#changeColors").click(function(){
             computerC.color = "#BB8924"
             player.wallColor = "#6A908D"
         }
-        else if(status.colorsRetro === true){
-            $("#buttonText").text("N")
-            status.colorsRetro = false,
-            computer.trailColor = "#FFFF00"
-            computer.color = "#FFFF88"
-            player.trailColor = "0000FF"
-            player.color = "#8888FF"
-            computerB.trailColor = "#FF0000"
-            computerB.color = "#FF8888"
-            computerC.trailColor = "#00FF00"
-            computerC.color = "#88FF88"
-            player.wallColor ="0000a0"
+        else if(status.colorsRetro%3 === 2){
+            status.colorsRetro = 0
+            $("#buttonText").text("REVISED")
+            computer.trailColor = "#FE9C00"
+            computer.color = "#FFE988"
+            player.trailColor = "#53A0FF"
+            player.color = "#CAC8FF"
+            computerB.trailColor = "#FE9C00"
+            computerB.color = "#FFE988"
+            computerC.trailColor = "#FE9C00"
+            computerC.color = "#FFE988"
+            player.wallColor ="#494949"
         }
     }
 });
