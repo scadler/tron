@@ -81,8 +81,8 @@ function createGrid(){
         })
     }else if(status.colorsRetro === 0){
         $(".cell").css({
-            "border-right": "1px solid #000000",
-            "border-bottom": "1px solid #000000",
+            "border-right": "1px solid #091313",
+            "border-bottom": "1px solid #091313",
         })
     }
 }
