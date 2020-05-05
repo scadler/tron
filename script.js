@@ -15,7 +15,7 @@ const status = {
     b : 51,
     colorsRetro : 1,
     remaining : 3,
-    obstacles : false,
+    obstacles : 0,
 }
 var player = {
     position: 2020,
@@ -57,8 +57,11 @@ function createGrid(){
         i++
     }
     var i = 0
-    if(status.obstacles === true){
+    if(status.obstacles === 1){
         createObstacles()
+    }
+    else if(status.obstacles === 2){
+        createWalls()
     }
     while(i < 10000){
         if(i<100 || i>9899 || i%100 == 0 || i%100 === 99){
@@ -94,6 +97,26 @@ function createObstacles(){
             $("#"+id).css("background-color",player.wallColor)
         }
         counter++
+    }
+}
+function createWalls(){
+    var int = 649
+    var intC = 4906
+    while(int < 9400){
+        if(int < 4000 || int > 6000){
+        $("#"+int).css("background-color",player.wallColor)
+        var intB = int+1
+        $("#"+intB).css("background-color",player.wallColor)
+        }
+        int+=100
+    }
+    while(intC < 4994){
+        if(intC < 4940 || intC > 4959){
+        $("#"+intC).css("background-color",player.wallColor)
+        var intD = intC+100
+        $("#"+intD).css("background-color",player.wallColor)
+        }
+        intC+=1
     }
 }
 createGrid();
@@ -135,7 +158,6 @@ function draw(position, direction, color, trailColor, type, state){
     }
 }
 }
-
 function checkCollisions(position, direction, type){
     if((position%100 === 0 && direction === -1) || (position%100 === 99 && direction === 1) || (position<100 && direction === -100) || (position>9999 && direction === 100)){
         status.remaining -= 1;
@@ -403,7 +425,7 @@ function keyPressed(e){
 }
 $("#changeColors").click(function(){
     if(player.status !== 1 || status.remaining === 0){
-        if(status.colorsRetro%3 === 0){
+        if(status.colorsRetro === 0){
             status.colorsRetro = 1
             $("#buttonText").text("VIBRANT")
             computer.trailColor = "#FFFF00"
@@ -416,7 +438,7 @@ $("#changeColors").click(function(){
             computerC.color = "#88FF88"
             player.wallColor ="0000a0"
         }
-        else if(status.colorsRetro%3 === 1){
+        else if(status.colorsRetro === 1){
             status.colorsRetro = 2
             $("#buttonText").text("CLASSIC")
             computer.trailColor = "#FDDA47"
@@ -429,7 +451,7 @@ $("#changeColors").click(function(){
             computerC.color = "#BB8924"
             player.wallColor = "#6A908D"
         }
-        else if(status.colorsRetro%3 === 2){
+        else if(status.colorsRetro === 2){
             status.colorsRetro = 0
             $("#buttonText").text("REVISED")
             computer.trailColor = "#FE9C00"
@@ -446,13 +468,16 @@ $("#changeColors").click(function(){
 });
 $("#obstacleButton").click(function(){
     if(player.status !== 1 || status.remaining === 0){
-        if(status.obstacles === false){
-            $("#obstacleSpan").text("Y")
-            status.obstacles = true
+        status.obstacles += 1
+        status.obstacles = status.obstacles%3
+        if(status.obstacles === 0){
+            $("#obstacleSpan").text("NONE")
         }
-        else if(status.obstacles === true){
-            $("#obstacleSpan").text("N")
-            status.obstacles = false
+        else if(status.obstacles === 1){
+            $("#obstacleSpan").text("RING")
+        }
+        else if(status.obstacles === 2){
+            $("#obstacleSpan").text("WALL")
         }
     }
 })

@@ -53,7 +53,7 @@ html{
 }
 #subtext{
     position: absolute;
-    top: calc(2vh + 95px);
+    top: calc(2vh + 100px);
     left: calc(50vw + 50vh);
     color: #7DF9FF;
     font-size: 20px;
@@ -97,7 +97,7 @@ html{
 .gameOverText{
     position: absolute;
     left: calc(50vw - 175px);
-    top: calc(50vh - 90px);
+    top: calc(50vh - 9000px);
     z-index:1000;
     width: 400px;
     height: 200px;
