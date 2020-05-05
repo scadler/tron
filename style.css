@@ -97,7 +97,7 @@ html{
 .gameOverText{
     position: absolute;
     left: calc(50vw - 175px);
-    top: calc(50vh - 9000px);
+    top: calc(50vh - 90px);
     z-index:1000;
     width: 400px;
     height: 200px;
@@ -115,7 +115,7 @@ html{
 }
 .buttons{
     color: #7DF9FF;
-    font-size: 40px;
+    font-size: 60px;
     font-family: 'VT323', monospace;
     position:absolute; 
     width: calc(50vw - 50vh);
