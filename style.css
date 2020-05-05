@@ -1,195 +1,220 @@
 @font-face {
-    font-family: "Computer Pixel-7";
-    src: url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.eot"); 
-    src: url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.eot?#iefix") format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.woff2") format("woff2"),
-    url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.ttf") format("truetype"),
-    url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.svg#Computer Pixel-7") format("svg");
+	font-family: "Computer Pixel-7";
+	src: url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.eot");
+	src: url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.eot?#iefix") format("embedded-opentype"),
+		url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.woff2") format("woff2"),
+		url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.woff") format("woff"),
+		url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.ttf") format("truetype"),
+		url("//db.onlinewebfonts.com/t/4a064dff704742aa69b8ba55cf497a95.svg#Computer Pixel-7") format("svg");
 }
+
 @font-face {
-    font-family: "G7 Silkworm TTF";
-    src: url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.eot");
-    src: url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.eot?#iefix") format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.woff2") format("woff2"),
-    url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.ttf") format("truetype"),
-    url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.svg#G7 Silkworm TTF") format("svg");
-    }
-#grid{
-    width:100vh;
-    height:100vh;
-    top:1px solid #004;
-    left:1px solid #004;
+	font-family: "G7 Silkworm TTF";
+	src: url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.eot");
+	src: url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.eot?#iefix") format("embedded-opentype"),
+		url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.woff2") format("woff2"),
+		url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.woff") format("woff"),
+		url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.ttf") format("truetype"),
+		url("//db.onlinewebfonts.com/t/b01112992ce33b1bc535a22b9eb9aec4.svg#G7 Silkworm TTF") format("svg");
 }
-.cell{
-    border-right: 1px solid #00001b;
-    border-bottom: 1px solid #00001b;
-    height: calc(1vh - 1px);
-    width: calc(1vh - 1px);
-    float:left;
-    background-color: #001;
+
+#grid {
+	width: 100vh;
+	height: 100vh;
+	top: 1px solid #004;
+	left: 1px solid #004;
 }
-#table{
-    position: absolute;
-    left: calc(50vw - 50vh);
-    top:0vh;
+
+.cell {
+	border-right: 1px solid #00001b;
+	border-bottom: 1px solid #00001b;
+	height: calc(1vh - 1px);
+	width: calc(1vh - 1px);
+	float: left;
+	background-color: #001;
 }
-html{
-    background-color:#001
+
+#table {
+	position: absolute;
+	left: calc(50vw - 50vh);
+	top: 0vh;
 }
-#title{
-    position: absolute;
-    top: 3vh;
-    left: calc(50vw + 50vh);
-    color: #7DF9FF;
-    font-size: 60px;
-    font-family: 'TRON', sans-serif;
-    text-orientation: upright;
-    text-shadow: -4px -4px 6px #0892d0, 4px 4px 6px #0892d0, -4px 4px 6px #0892d0, 4px -4px 6px #0892d0;
-    width: calc(50vw - 50vh);
-    display: flex;
-    justify-content: center;
+
+html {
+	background-color: #001
 }
-#subtext{
-    position: absolute;
-    top: calc(2vh + 100px);
-    left: calc(50vw + 50vh);
-    color: #7DF9FF;
-    font-size: 20px;
-    font-family: 'VT323', monospace;
-    text-orientation: upright;
-    text-shadow: -1px -1px 2px #0892d0, 1px 1px 2px #0892d0, -1px 1px 2px #0892d0, 1px -1px 2px #0892d0;
-    width: calc(50vw - 50vh);
-    display: flex;
-    justify-content: center;
+
+#title {
+	position: absolute;
+	top: 3vh;
+	left: calc(50vw + 50vh);
+	color: #7DF9FF;
+	font-size: 60px;
+	font-family: 'TRON', sans-serif;
+	text-orientation: upright;
+	text-shadow: -4px -4px 6px #0892d0, 4px 4px 6px #0892d0, -4px 4px 6px #0892d0, 4px -4px 6px #0892d0;
+	width: calc(50vw - 50vh);
+	display: flex;
+	justify-content: center;
 }
-    /* text-shadow: -1px -1px 1px #0892d0, 1px 1px 1px #0892d0, -1px 1px 1px #0892d0, 1px -1px 1px #0892d0; */
-#lightbikes{
-    position: absolute;
-    top: 15vh;
-    left: calc(50vw + 50vh);
-    height: 30vh;
-    width: calc(100vw - calc(50vw + 50vh));
-    font-family: 'TRON', sans-serif;
+
+#subtext {
+	position: absolute;
+	top: calc(2vh + 100px);
+	left: calc(50vw + 50vh);
+	color: #7DF9FF;
+	font-size: 20px;
+	font-family: 'VT323', monospace;
+	text-orientation: upright;
+	text-shadow: -1px -1px 2px #0892d0, 1px 1px 2px #0892d0, -1px 1px 2px #0892d0, 1px -1px 2px #0892d0;
+	width: calc(50vw - 50vh);
+	display: flex;
+	justify-content: center;
 }
-#blue{
-    color: #0000FF;
+
+/* text-shadow: -1px -1px 1px #0892d0, 1px 1px 1px #0892d0, -1px 1px 1px #0892d0, 1px -1px 1px #0892d0; */
+#lightbikes {
+	position: absolute;
+	top: 15vh;
+	left: calc(50vw + 50vh);
+	height: 30vh;
+	width: calc(100vw - calc(50vw + 50vh));
+	font-family: 'TRON', sans-serif;
 }
-#yellow{
-    color: #FFFF00;
+
+#blue {
+	color: #0000FF;
 }
-#red{
-    color: #FF0000;
+
+#yellow {
+	color: #FFFF00;
 }
-#green{
-    color: #00FF00;
+
+#red {
+	color: #FF0000;
 }
-.bike{
-    font-size: 65px;
+
+#green {
+	color: #00FF00;
 }
-.bikeClass{
-    width: calc(50vw - 50vh);
-    height: 10vh;
-    display:flex;
-    justify-content: space-around;
+
+.bike {
+	font-size: 65px;
 }
-.gameOverText{
-    position: absolute;
-    left: calc(50vw - 175px);
-    top: calc(50vh - 90px);
-    z-index:1000;
-    width: 400px;
-    height: 200px;
-    font-family: 'VT323', monospace;
-    color: #7DF9FF;
-    font-size: 90px;
-    text-shadow: 0px 0px 12px #0892d0;
+
+.bikeClass {
+	width: calc(50vw - 50vh);
+	height: 10vh;
+	display: flex;
+	justify-content: space-around;
 }
-#buttonsDiv{
-    position: absolute;
-    top: 15vh;
-    left: 0vh;
-    width: calc(50vw - 50vh);
-    height:30vh;
+
+.gameOverText {
+	position: absolute;
+	left: calc(50vw - 175px);
+	top: calc(50vh - 90px);
+	z-index: 1000;
+	width: 400px;
+	height: 200px;
+	font-family: 'VT323', monospace;
+	color: #7DF9FF;
+	font-size: 90px;
+	text-shadow: 0px 0px 12px #0892d0;
 }
-.buttons{
-    color: #7DF9FF;
-    font-size: 60px;
-    font-family: 'VT323', monospace;
-    position:absolute; 
-    width: calc(50vw - 50vh);
-    height:10vh;
-    background-color:#004;
-    border-color:#0892d0;
-    opacity: 0.4;
-    outline: none;
+
+#buttonsDiv {
+	position: absolute;
+	top: 15vh;
+	left: 0vh;
+	width: calc(50vw - 50vh);
+	height: 30vh;
 }
-#obstacleButton{
-    top: 10vh;
+
+.buttons {
+	color: #7DF9FF;
+	font-size: 60px;
+	font-family: 'VT323', monospace;
+	position: absolute;
+	width: calc(50vw - 50vh);
+	height: 10vh;
+	background-color: #004;
+	border-color: #0892d0;
+	opacity: 0.4;
+	outline: none;
 }
-#instructionsDiv{
-    position: absolute;
-    top: 50vh;
-    left: calc(50vw + calc(50vh + 10px));
-    color: #7DF9FF;
-    font-size: 30px;
-    font-family: 'VT323', monospace;
-    text-orientation: upright;
-    text-shadow: 0px 0px 10px #0892d0;
-    display: flex;
-    justify-content: center;
+
+#obstacleButton {
+	top: 10vh;
 }
-#titleDiv{
-    display:flex;
-    justify-content:center;
+
+#instructionsDiv {
+	position: absolute;
+	top: 50vh;
+	left: calc(50vw + calc(50vh + 10px));
+	color: #7DF9FF;
+	font-size: 30px;
+	font-family: 'VT323', monospace;
+	text-orientation: upright;
+	text-shadow: 0px 0px 10px #0892d0;
+	display: flex;
+	justify-content: center;
 }
-#mainTitle{
-    position: relative;
-    transition: 0.4s;
-    top: calc(2vh + 90px);
-    color: #6CE8EE;
-    font-size: 160px;
-    font-family: 'TRON', sans-serif;
-    text-orientation: upright;
-    text-shadow: -3px -3px 7px #0082c0, 3px 3px 7px #0082c0, -3px 3px 7px #0082c0, 3px -3px 7px #0082c0;
-    width: calc(50vw - 50vh);
-    display: flex;
-    justify-content: center;
+
+#titleDiv {
+	display: flex;
+	justify-content: center;
 }
-#mainTitle:hover{
-    opacity:1;
-    font-size: 165px;
-    color: #7DF9FF;
-    top: calc(2vh + 80px);
-    text-shadow: -5px -5px 12px #0892d0, 5px 5px 12px #0892d0, -5px 5px 12px #0892d0, 5px -5px 12px #0892d0;
+
+#mainTitle {
+	position: relative;
+	transition: 0.4s;
+	top: calc(2vh + 90px);
+	color: #6CE8EE;
+	font-size: 160px;
+	font-family: 'TRON', sans-serif;
+	text-orientation: upright;
+	text-shadow: -3px -3px 7px #0082c0, 3px 3px 7px #0082c0, -3px 3px 7px #0082c0, 3px -3px 7px #0082c0;
+	width: calc(50vw - 50vh);
+	display: flex;
+	justify-content: center;
 }
-#mainTitle::after{
-    content : "";
-    position: absolute;
-    left: 15px;
-    bottom: -30px;
-    width: 384px;
-    height: 3px;
-    border-radius: 15px;
-    background : #8DF9FF;
-    box-shadow: -3px -3px 7px #0892d0, 3px 3px 7px #0892d0, -3px 3px 7px #0892d0, 3px -3px 7px #0892d0;
-    transform: scaleX(0);
-    transform-origin : right;
-    transition:  transform 100ms linear;
+
+#mainTitle:hover {
+	opacity: 1;
+	font-size: 165px;
+	color: #7DF9FF;
+	top: calc(2vh + 80px);
+	text-shadow: -5px -5px 12px #0892d0, 5px 5px 12px #0892d0, -5px 5px 12px #0892d0, 5px -5px 12px #0892d0;
 }
-#mainTitle:hover::after{
-    transform: scaleX(1);
-    transform-origin : left;
+
+#mainTitle::after {
+	content: "";
+	position: absolute;
+	left: 15px;
+	bottom: -30px;
+	width: 384px;
+	height: 3px;
+	border-radius: 15px;
+	background: #8DF9FF;
+	box-shadow: -3px -3px 7px #0892d0, 3px 3px 7px #0892d0, -3px 3px 7px #0892d0, 3px -3px 7px #0892d0;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 100ms linear;
 }
-#mainSubtext{
-    position: absolute;
-    top: calc(2vh + 340px);
-    color: #7DF9FF;
-    font-size: 80px;
-    font-family: 'VT323', monospace;
-    text-orientation: upright;
-    text-shadow: -3px -3px 6px #0892d0, 3px 3px 6px #0892d0, -3px 3px 6px #0892d0, 3px -3px 6px #0892d0;
-    display: flex;
-    justify-content: center;
+
+#mainTitle:hover::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+#mainSubtext {
+	position: absolute;
+	top: calc(2vh + 340px);
+	color: #7DF9FF;
+	font-size: 80px;
+	font-family: 'VT323', monospace;
+	text-orientation: upright;
+	text-shadow: -3px -3px 6px #0892d0, 3px 3px 6px #0892d0, -3px 3px 6px #0892d0, 3px -3px 6px #0892d0;
+	display: flex;
+	justify-content: center;
 }
