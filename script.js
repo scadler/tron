@@ -100,18 +100,18 @@ function createObstacles(){
     }
 }
 function createWalls(){
-    var int = 649
-    var intC = 4906
-    while(int < 9400){
-        if(int < 4000 || int > 6000){
+    var int = 1549
+    var intC = 4915
+    while(int < 8500){
+        if(int < 3500 || int > 6500){
         $("#"+int).css("background-color",player.wallColor)
         var intB = int+1
         $("#"+intB).css("background-color",player.wallColor)
         }
         int+=100
     }
-    while(intC < 4994){
-        if(intC < 4940 || intC > 4959){
+    while(intC < 4985){
+        if(intC < 4935 || intC > 4964){
         $("#"+intC).css("background-color",player.wallColor)
         var intD = intC+100
         $("#"+intD).css("background-color",player.wallColor)
