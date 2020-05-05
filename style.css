@@ -167,7 +167,7 @@ html{
 #mainTitle::after{
     content : "";
     position: absolute;
-    left: -35px;
+    left: 15px;
     bottom: -30px;
     width: 384px;
     height: 3px;
