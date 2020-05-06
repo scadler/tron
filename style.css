@@ -132,7 +132,7 @@ html {
 
 .buttons {
 	color: #7DF9FF;
-	font-size: 60px;
+	font-size: 45px;
 	font-family: 'VT323', monospace;
 	position: absolute;
 	width: calc(50vw - 50vh);
