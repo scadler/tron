@@ -86,16 +86,20 @@ function createGrid() {
 }
 
 function createObstacles() {
-	var counter = 0
-	while (counter < 200) {
-		var id = Math.floor(Math.random() * 10000)
-		if (id % 100 < 14 || id % 100 > 86 || id > 8498 || id < 1400) {
-			$("#" + id).css("background-color", player.wallColor)
-		} else if (id < 7381 && id % 100 < 75 && id > 2619 && id % 100 > 25) {
-			$("#" + id).css("background-color", player.wallColor)
-		}
-		counter++
-	}
+	var xA = 1010
+	while (xA < 1090) {
+        $("#" + xA).css("background-color", player.wallColor)
+        var id = xA + 8000    
+        $("#" + id).css("background-color", player.wallColor)
+		xA++
+    }
+    var xB = 1010
+    while (xB < 9101) {
+        $("#" + xB).css("background-color", player.wallColor)
+        var idB = xB + 80
+        $("#" + idB).css("background-color", player.wallColor)
+		xB += 100
+    }
 }
 
 function createWalls() {
