@@ -12,7 +12,8 @@ const status = {
 	b: 51,
 	colorsRetro: 1,
 	remaining: 3,
-	obstacles: 0,
+    obstacles: 0,
+    floorColor: "rgb(0, 0, 17)"
 }
 var player = {
 	position: 2020,
@@ -54,7 +55,8 @@ function createGrid() {
 	while (i < 10000) {
 		$("#grid").append(`<div class="cell" id=${i}></div>`);
 		i++
-	}
+    }
+    $(".cell").css("background-color",status.floorColor)
 	var i = 0
 	if (status.obstacles === 1) {
 		createObstacles()
@@ -79,10 +81,10 @@ function createGrid() {
 		})
 	} else if (status.colorsRetro === 0) {
 		$(".cell").css({
-			"border-right": "1px solid #091313",
-			"border-bottom": "1px solid #091313",
+			"border-right": "1px solid #090909",
+			"border-bottom": "1px solid #090909",
 		})
-	}
+    }
 }
 
 function createObstacles() {
@@ -127,7 +129,7 @@ createGrid();
 function draw(position, direction, color, trailColor, type, state) {
 	if (state === 1) {
 		var newPosition = position + direction
-		if ($("#" + newPosition).css("background-color") === "rgb(0, 0, 17)") {
+		if ($("#" + newPosition).css("background-color") === status.floorColor) {
 			if (type === "player") {
 				player.position = newPosition
 			} else if (type === "computer") {
@@ -189,7 +191,7 @@ function computerAI(pos, dir, type) {
 		var b = Math.floor(Math.random() * 4)
 		var ranDirec = (b === 0) ? -1 : (b === 1) ? 1 : (b === 2) ? 100 : -100
 		var possibleNextPos = pos + ranDirec
-		if ($("#" + possibleNextPos).css("background-color") === "rgb(0, 0, 17)") {
+		if ($("#" + possibleNextPos).css("background-color") === status.floorColor) {
 			if (type === "a") {
 				computer.direction = ranDirec
 			} else if (type === "b") {
@@ -204,16 +206,16 @@ function computerAI(pos, dir, type) {
 	var bNewPos = aNewPos + dir
 	var cNewPos = bNewPos + dir
 	var dNewPos = cNewPos + dir
-	if ($("#" + newPos).css("background-color") !== "rgb(0, 0, 17)" || $("#" + aNewPos).css("background-color") !== "rgb(0, 0, 17)" || $("#" + bNewPos).css("background-color") !== "rgb(0, 0, 17)" || $("#" + cNewPos).css("background-color") !== "rgb(0, 0, 17)" || $("#" + dNewPos).css("background-color") !== "rgb(0, 0, 17)") {
+	if ($("#" + newPos).css("background-color") !== status.floorColor || $("#" + aNewPos).css("background-color") !== status.floorColor || $("#" + bNewPos).css("background-color") !== status.floorColor || $("#" + cNewPos).css("background-color") !== status.floorColor || $("#" + dNewPos).css("background-color") !== status.floorColor) {
 		if (dir % 100 === 0) {
 			newDirec = (Math.random() - 0.5 > 0) ? -1 : 1
 			possibleNewPos = pos + newDirec
-			if ($("#" + possibleNewPos).css("background-color") === "rgb(0, 0, 17)") {
+			if ($("#" + possibleNewPos).css("background-color") === status.floorColor) {
 				dir = newDirec
 			}
 			newDirec = -newDirec
 			possibleNewPos = pos + newDirec
-			if ($("#" + possibleNewPos).css("background-color") === "rgb(0, 0, 17)") {
+			if ($("#" + possibleNewPos).css("background-color") === status.floorColor) {
 				if (type === "a") {
 					computer.direction = newDirec
 				} else if (type === "b") {
@@ -225,7 +227,7 @@ function computerAI(pos, dir, type) {
 		} else {
 			newDirec = (Math.random() - 0.5 > 0) ? -100 : 100
 			possibleNewPos = pos + newDirec
-			if ($("#" + possibleNewPos).css("background-color") === "rgb(0, 0, 17)") {
+			if ($("#" + possibleNewPos).css("background-color") === status.floorColor) {
 				if (type === "a") {
 					computer.direction = newDirec
 				} else if (type === "b") {
@@ -236,7 +238,7 @@ function computerAI(pos, dir, type) {
 			}
 			newDirec = -newDirec
 			possibleNewPos = computer.position + newDirec
-			if ($("#" + possibleNewPos).css("background-color") === "rgb(0, 0, 17)") {
+			if ($("#" + possibleNewPos).css("background-color") === status.floorColor) {
 				if (type === "a") {
 					computer.direction = newDirec
 				} else if (type === "b") {
@@ -247,12 +249,12 @@ function computerAI(pos, dir, type) {
 			}
 		}
 	}
-	if ($("#" + newPos).css("background-color") !== "rgb(0, 0, 17)") {
+	if ($("#" + newPos).css("background-color") !== status.floorColor) {
 		var up = computer.position - 100
 		var left = computer.position - 1
 		var down = computer.position + 100
 		var right = computer.position + 1
-		if ($("#" + down).css("background-color") === "rgb(0, 0, 17)" && status.lastTurnUp === true && down !== newPos) {
+		if ($("#" + down).css("background-color") === status.floorColor && status.lastTurnUp === true && down !== newPos) {
 			if (type === "a") {
 				computer.direction = 100
 				status.lastTurnUp = false;
@@ -263,7 +265,7 @@ function computerAI(pos, dir, type) {
 				computerC.direction = 100
 				status.lastTurnUpC = false;
 			}
-		} else if ($("#" + left).css("background-color") === "rgb(0, 0, 17)" && left !== newPos) {
+		} else if ($("#" + left).css("background-color") === status.floorColor && left !== newPos) {
 			if (type === "a") {
 				computer.direction = -1
 			} else if (type === "b") {
@@ -271,7 +273,7 @@ function computerAI(pos, dir, type) {
 			} else {
 				computerC.direction = -1
 			}
-		} else if ($("#" + up).css("background-color") === "rgb(0, 0, 17)" && up !== newPos) {
+		} else if ($("#" + up).css("background-color") === status.floorColor && up !== newPos) {
 			if (type === "a") {
 				computer.direction = -100
 				status.lastTurnUp = true;
@@ -282,7 +284,7 @@ function computerAI(pos, dir, type) {
 				computerC.direction = -100
 				status.lastTurnUpC = true;
 			}
-		} else if ($("#" + right).css("background-color") === "rgb(0, 0, 17)" && right !== newPos) {
+		} else if ($("#" + right).css("background-color") === status.floorColor && right !== newPos) {
 			if (type === "a") {
 				computer.direction = 1
 			} else if (type === "b") {
@@ -292,7 +294,7 @@ function computerAI(pos, dir, type) {
 			}
 		}
 		//this last line is to make sure that when the last turn was up but the case to turn down is the only one to evaulate true the bike can still turn down 
-		else if ($("#" + down).css("background-color") === "rgb(0, 0, 17)") {
+		else if ($("#" + down).css("background-color") === status.floorColor) {
 			if (type === "a") {
 				computer.direction = 100
 				status.lastTurnUp = false;
@@ -330,23 +332,23 @@ function changeLightbikeColor(type, position) {
 	$("#7920").addClass("computerBTrail")
 	$("#2080").addClass("computerCTrail")
 	var typeTrail = type + "Trail"
-	$(`.${typeTrail}`).css("background-color", "#000011")
+	$(`.${typeTrail}`).css("background-color", status.floorColor)
 	if (type === "player") {
-		$("#2020").css("background-color", "#000011")
+		$("#2020").css("background-color", status.floorColor)
 		$("#" + position).addClass("playertrail")
-		$("#blue").css("color", "#000011")
+		$("#blue").css("color", status.floorColor)
 	} else if (type === "computer") {
-		$("#7980").css("background-color", "#000011")
+		$("#7980").css("background-color", status.floorColor)
 		$("#" + position).addClass("computertrail")
-		$("#yellow").css("color", "#000011")
+		$("#yellow").css("color", status.floorColor)
 	} else if (type === "computerB") {
-		$("#7920").css("background-color", "#000011")
+		$("#7920").css("background-color", status.floorColor)
 		$("#" + position).addClass("computerBtrail")
-		$("#red").css("color", "#000011")
+		$("#red").css("color", status.floorColor)
 	} else if (type === "computerC") {
-		$("#2080").css("background-color", "#000011")
+		$("#2080").css("background-color", status.floorColor)
 		$("#" + position).addClass("computerCtrail")
-		$("#green").css("color", "#000011")
+		$("#green").css("color", status.floorColor)
 	}
 	if (player.status !== 1) {
 		$(".buttons").css("opacity", "1");
@@ -435,7 +437,8 @@ $("#changeColors").click(function() {
 			computerB.color = "#FF8888"
 			computerC.trailColor = "#00FF00"
 			computerC.color = "#88FF88"
-			player.wallColor = "0000a0"
+            player.wallColor = "#0000a0"
+            status.floorColor = "rgb(0, 0, 17)"
 		} else if (status.colorsRetro === 1) {
 			status.colorsRetro = 2
 			$("#buttonText").text("CLASSIC")
@@ -447,7 +450,8 @@ $("#changeColors").click(function() {
 			computerB.color = "#BB8924"
 			computerC.trailColor = "#FDDA47"
 			computerC.color = "#BB8924"
-			player.wallColor = "#6A908D"
+            player.wallColor = "#6A908D"
+            status.floorColor = "rgb(10, 10, 10)"
 		} else if (status.colorsRetro === 2) {
 			status.colorsRetro = 0
 			$("#buttonText").text("REVISED")
@@ -459,7 +463,8 @@ $("#changeColors").click(function() {
 			computerB.color = "#FFE988"
 			computerC.trailColor = "#FE9C00"
 			computerC.color = "#FFE988"
-			player.wallColor = "#494949"
+            player.wallColor = "#494949"
+            status.floorColor = "rgb(0, 0, 0)"
 		}
 	}
 });
