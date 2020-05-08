@@ -342,19 +342,19 @@ function changeLightbikeColor(type, position) {
 	if (type === "player") {
 		$("#2020").css("background-color", status.floorColor)
 		$("#" + position).addClass("playertrail")
-		$("#blue").css("color", status.floorColor)
+		$("#blue").css("color", "#000011")
 	} else if (type === "computer") {
 		$("#7980").css("background-color", status.floorColor)
 		$("#" + position).addClass("computertrail")
-		$("#yellow").css("color", status.floorColor)
+		$("#yellow").css("color", "#000011")
 	} else if (type === "computerB") {
 		$("#7920").css("background-color", status.floorColor)
 		$("#" + position).addClass("computerBtrail")
-		$("#red").css("color", status.floorColor)
+		$("#red").css("color", "#000011")
 	} else if (type === "computerC") {
 		$("#2080").css("background-color", status.floorColor)
 		$("#" + position).addClass("computerCtrail")
-		$("#green").css("color", status.floorColor)
+		$("#green").css("color", "#000011")
 	}
 	if (player.status !== 1) {
 		$(".buttons").css("opacity", "1");
@@ -431,9 +431,9 @@ function keyPressed(e) {
 	}
 }
 //try to use a format like this to compress the code, this one wont work well
-var colorScheme = {
-    vibrant = ["#0000FF","#8888FF","#FFFF00","#FFFF88","#FF0000","#FF8888","#00FF00","#88FF88","#0000a0","rgb(0, 0, 17)"]
-}
+// var colorScheme = {
+//     vibrant = ["#0000FF","#8888FF","#FFFF00","#FFFF88","#FF0000","#FF8888","#00FF00","#88FF88","#0000a0","rgb(0, 0, 17)"],
+// }
 function changeColors(i){
 	player.trailColor = colorScheme.vibrant[0]
     player.color = colorScheme.vibrant[1]
