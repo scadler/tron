@@ -1,6 +1,6 @@
 var lightbikeAudio = document.getElementById("lightbike");
-lightbikeAudio.volume = 0.1;
-lightbikeAudio.loop = true;
+// lightbikeAudio.volume = 0.1;
+// lightbikeAudio.loop = true;
 $("#mainTitle").click(function(){
 var startAudio = document.getElementById("startAudio");
     startAudio.play()
@@ -369,7 +369,7 @@ function changeLightbikeColor(type, position) {
 		$(".buttons").css("opacity", "1");
 		$("#gameOver").show();
 	} else if (status.remaining === 0) {
-        lightbikeAudio.pause()
+        // lightbikeAudio.pause()
 		$(".buttons").css("opacity", "1");
 		$("#gameWon").show();
 	}
@@ -413,7 +413,7 @@ setInterval(game, 100)
 function resetGrid() {
 	$("#grid").empty();
     createGrid();
-    lightbikeAudio.play();
+    // lightbikeAudio.play();
 }
 document.addEventListener('keydown', keyPressed)
 
