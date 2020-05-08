@@ -490,7 +490,7 @@ $("#changeColors").click(function() {
         }
         else if (status.colorsRetro === 3) {
 			status.colorsRetro = 0
-			$("#buttonText").text("REVERSE")
+			$("#buttonText").text("SILVERY")
 			computer.trailColor = "#888888"
 			computer.color = "#555555"
 			player.trailColor = "#FFFFFF"
