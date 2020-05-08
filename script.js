@@ -1,3 +1,8 @@
+$("#mainTitle").click(function(){
+    $("#audioSpan").text(<audio preload="auto" autoplay="autoplay">
+    <source src="start.mp3" type="audio/mp3" />
+  </audio>)
+});
 const status = {
 	yellow: 1,
 	blue: 1,
