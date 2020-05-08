@@ -3,10 +3,11 @@ const lightbikeAudio = document.getElementById("lightbike");
 lightbikeAudio.volume = 0.2;
 lightbikeAudio.loop = true;
 $("#mainTitle").click(function(){
-// var startAudio = document.getElementById("startAudio");
     $("#startAudio").append(`<audio preload="auto" autoplay="autoplay">
     <source src="start.mp3" type="audio/mp3" />
   </audio>`)
+  var startAudio = document.getElementById("startAudio");
+startAudio.volume = 0.2
     setTimeout(function(){ window.location.href = 'game.html' }, 4000);
     lightbikeAudio.play();
 });
