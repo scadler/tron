@@ -430,6 +430,22 @@ function keyPressed(e) {
 		resetGame()
 	}
 }
+//try to use a format like this to compress the code, this one wont work well
+var colorScheme = {
+    vibrant = ["#0000FF","#8888FF","#FFFF00","#FFFF88","#FF0000","#FF8888","#00FF00","#88FF88","#0000a0","rgb(0, 0, 17)"]
+}
+function changeColors(i){
+	player.trailColor = colorScheme.vibrant[0]
+    player.color = colorScheme.vibrant[1]
+    computer.trailColor = colorScheme.vibrant[2]
+	computer.color = colorScheme.vibrant[3]
+	computerB.trailColor = colorScheme.vibrant[4]
+	computerB.color = colorScheme.vibrant[5]
+    computerC.trailColor = colorScheme.vibrant[6]
+	computerC.color = colorScheme.vibrant[7]
+    player.wallColor = colorScheme.vibrant[8]
+    status.floorColor = colorScheme.vibrant[9]
+}
 $("#changeColors").click(function() {
 	if (player.status !== 1 || status.remaining === 0) {
 		if (status.colorsRetro === 0) {
@@ -437,7 +453,7 @@ $("#changeColors").click(function() {
 			$("#buttonText").text("VIBRANT")
 			computer.trailColor = "#FFFF00"
 			computer.color = "#FFFF88"
-			player.trailColor = "0000FF"
+			player.trailColor = "#0000FF"
 			player.color = "#8888FF"
 			computerB.trailColor = "#FF0000"
 			computerB.color = "#FF8888"
@@ -474,7 +490,7 @@ $("#changeColors").click(function() {
         }
         else if (status.colorsRetro === 3) {
 			status.colorsRetro = 0
-			$("#buttonText").text("SILVERY")
+			$("#buttonText").text("REVERSE")
 			computer.trailColor = "#888888"
 			computer.color = "#555555"
 			player.trailColor = "#FFFFFF"
