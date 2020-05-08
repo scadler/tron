@@ -1,15 +1,19 @@
-const lightbikeAudio = document.getElementById("lightbike");
+function nextPage(){
+    window.location.href = 'game.html' 
+    $("#bikeAudio").append(`<audio preload="auto" autoplay="autoplay"><source src="lightbike.mp3" type="audio/mp3" /></audio>`)
+    const lightbikeAudio = document.getElementById("lightbike");
+    lightbikeAudio.volume = 0.2;
+    lightbikeAudio.loop = true;
+}
 
-lightbikeAudio.volume = 0.2;
-lightbikeAudio.loop = true;
 $("#mainTitle").click(function(){
-    $("#startAudio").append(`<audio preload="auto" autoplay="autoplay">
-    <source src="start.mp3" type="audio/mp3" />
-  </audio>`)
-  var startAudio = document.getElementById("startAudio");
-startAudio.volume = 0.2
-    setTimeout(function(){ window.location.href = 'game.html' }, 4000);
+    $("#startAudio").append(`<audio preload="auto" autoplay="autoplay"><source src="start.mp3" type="audio/mp3" /></audio>`)
+    var startAudio = document.getElementById("startAudio");
+    startAudio.volume = 0.2
+    setTimeout(nextPage, 4000);
     lightbikeAudio.play();
+    
+  
 });
 const status = {
 	yellow: 1,
