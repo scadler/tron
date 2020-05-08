@@ -76,13 +76,19 @@ function createGrid() {
 		})
 	} else if (status.colorsRetro === 2) {
 		$(".cell").css({
-			"border-right": "1px solid #111111",
-			"border-bottom": "1px solid #111111",
-		})
-	} else if (status.colorsRetro === 0) {
+			"border-right": "1px solid #000000",
+			"border-bottom": "1px solid #000000",
+        })
+    }
+    else if (status.colorsRetro === 3) {
 		$(".cell").css({
 			"border-right": "1px solid #090909",
 			"border-bottom": "1px solid #090909",
+		})
+	} else if (status.colorsRetro === 0) {
+		$(".cell").css({
+			"border-right": "1px solid #151515",
+			"border-bottom": "1px solid #151515",
 		})
     }
 }
@@ -451,9 +457,9 @@ $("#changeColors").click(function() {
 			computerC.trailColor = "#FDDA47"
 			computerC.color = "#BB8924"
             player.wallColor = "#6A908D"
-            status.floorColor = "rgb(10, 10, 10)"
+            status.floorColor = "rgb(1, 4, 33)"
 		} else if (status.colorsRetro === 2) {
-			status.colorsRetro = 0
+			status.colorsRetro = 3
 			$("#buttonText").text("REVISED")
 			computer.trailColor = "#FE9C00"
 			computer.color = "#FFE988"
@@ -465,6 +471,20 @@ $("#changeColors").click(function() {
 			computerC.color = "#FFE988"
             player.wallColor = "#494949"
             status.floorColor = "rgb(0, 0, 0)"
+        }
+        else if (status.colorsRetro === 3) {
+			status.colorsRetro = 0
+			$("#buttonText").text("SILVERY")
+			computer.trailColor = "#888888"
+			computer.color = "#555555"
+			player.trailColor = "#FFFFFF"
+			player.color = "#808080"
+			computerB.trailColor = "#888888"
+			computerB.color = "#555555"
+			computerC.trailColor = "#888888"
+			computerC.color = "#555555"
+            player.wallColor = "404040"
+            status.floorColor = "rgb(10, 10, 10)"
 		}
 	}
 });
