@@ -2,7 +2,7 @@ var lightbikeAudio = document.getElementById("lightbike");
 // lightbikeAudio.volume = 0.1;
 // lightbikeAudio.loop = true;
 $("#mainTitle").click(function(){
-var startAudio = document.getElementById("startAudio");
+// var startAudio = document.getElementById("startAudio");
     $("#startAudio").append(`<audio preload="auto" autoplay="autoplay">
     <source src="start.mp3" type="audio/mp3" />
   </audio>`)
