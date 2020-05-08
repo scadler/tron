@@ -1,4 +1,4 @@
-var lightbikeAudio = document.getElementById("lightbike");
+const lightbikeAudio = document.getElementById("lightbike");
 // lightbikeAudio.volume = 0.1;
 // lightbikeAudio.loop = true;
 $("#mainTitle").click(function(){
@@ -6,8 +6,8 @@ $("#mainTitle").click(function(){
     $("#startAudio").append(`<audio preload="auto" autoplay="autoplay">
     <source src="start.mp3" type="audio/mp3" />
   </audio>`)
-    setTimeout(function(){ window.location.href = 'game.html' }, 3000);
-  
+    setTimeout(function(){ window.location.href = 'game.html' }, 4000);
+    lightbikeAudio.play();
 });
 const status = {
 	yellow: 1,
