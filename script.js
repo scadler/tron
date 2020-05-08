@@ -5,6 +5,7 @@ function nextPage(){
     // console.log(lightbikeAudio+" "+"1010")
     // lightbikeAudio.volume = 0.2;
     // lightbikeAudio.loop = true;
+    //
 }
 
 $("#mainTitle").click(function(){
