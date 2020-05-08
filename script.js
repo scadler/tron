@@ -1,7 +1,10 @@
 $("#mainTitle").click(function(){
-    $("#audioSpan").text(<audio preload="auto" autoplay="autoplay">
+    $("#audioSpan").text(`<audio preload="auto" autoplay="autoplay">
     <source src="start.mp3" type="audio/mp3" />
-  </audio>)
+  </audio>`
+  )
+    setTimeout(function(){ window.location.href = 'game.html' }, 3000);
+  
 });
 const status = {
 	yellow: 1,
