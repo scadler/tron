@@ -1,7 +1,9 @@
+var lightbikeAudio = document.getElementById("lightbike");
+lightbikeAudio.volume = 0.1;
+lightbikeAudio.loop = true;
 $("#mainTitle").click(function(){
-    $("#audioSpan").text(`<audio preload="auto" autoplay="autoplay">
-    <source src="start.mp3" type="audio/mp3" />
-  </audio>`)
+var startAudio = document.getElementById("startAudio");
+    startAudio.play()
     setTimeout(function(){ window.location.href = 'game.html' }, 3000);
   
 });
@@ -367,6 +369,7 @@ function changeLightbikeColor(type, position) {
 		$(".buttons").css("opacity", "1");
 		$("#gameOver").show();
 	} else if (status.remaining === 0) {
+        lightbikeAudio.pause()
 		$(".buttons").css("opacity", "1");
 		$("#gameWon").show();
 	}
@@ -409,7 +412,8 @@ setInterval(game, 100)
 
 function resetGrid() {
 	$("#grid").empty();
-	createGrid();
+    createGrid();
+    lightbikeAudio.play();
 }
 document.addEventListener('keydown', keyPressed)
 
