@@ -11,7 +11,7 @@ function nextPage(){
 $("#mainTitle").click(function(){
     $("#startAudio").append(`<audio id="start" preload="auto" autoplay="autoplay"><source src="start.mp3" type="audio/mp3" /></audio>`)
     var startAudio = document.getElementById("start");
-    startAudio.volume = 0.2
+    startAudio.volume = 0.05
     setTimeout(nextPage, 4000);
     // lightbikeAudio.play();
     
