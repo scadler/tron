@@ -14,7 +14,7 @@ $("#lightbike").onload = function() {
 }
 
 $("#mainTitle").click(function(){
-    $("#startAudio").append(`<audio id="start" preload="auto" autoplay="autoplay"><source src="start.mp3" type="audio/mp3" /></audio>`)
+    $("#startAudio").append(`<audio id="start" preload="auto" autoplay="autoplay"><source src="audio/start.mp3" type="audio/mp3" /></audio>`)
     var startAudio = document.getElementById("start");
     startAudio.volume = 0.2;
     setTimeout(nextPage, 3800);
@@ -356,6 +356,8 @@ function computerAI(pos, dir, type) {
 }
 
 function changeLightbikeColor(type, position) {
+    var crash = document.getElementById("crash");
+    crash.play();
 	$("." + type).addClass(type + "Trail")
 	$("#" + position).addClass(type + "Trail")
 	$("#2020").addClass("playerTrail")
@@ -478,6 +480,8 @@ function changeColors(i){
 }
 $("#changeColors").click(function() {
 	if (player.status !== 1 || status.remaining === 0) {
+        var click = document.getElementById("click");
+        click.play()
 		if (status.colorsRetro === 0) {
 			status.colorsRetro = 1
 			$("#buttonText").text("VIBRANT")
@@ -536,6 +540,8 @@ $("#changeColors").click(function() {
 });
 $("#obstacleButton").click(function() {
 	if (player.status !== 1 || status.remaining === 0) {
+        var click = document.getElementById("click");
+        click.play();
 		status.obstacles += 1
 		status.obstacles = status.obstacles % 3
 		if (status.obstacles === 0) {
