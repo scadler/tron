@@ -12,6 +12,10 @@ function playAudio(){
 $("#lightbike").onload = function() {
     playAudio()   
 }
+$("#music").onload = function(){
+    var music = document.getElementById("music");
+    music.play()
+}
 
 $("#mainTitle").click(function(){
     $("#startAudio").append(`<audio id="start" preload="auto" autoplay="autoplay"><source src="start.mp3" type="audio/mp3" /></audio>`)
