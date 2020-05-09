@@ -1,21 +1,20 @@
 function nextPage(){
-    window.location.href = 'game.html' 
-    // $("#bikeAudio").append(`<audio id="lightbike" preload="auto" autoplay="autoplay"><source src="lightbike.mp3" type="audio/mp3" /></audio>`)
-    // var lightbikeAudio = document.getElementById("lightbike");
-    // console.log(lightbikeAudio+" "+"1010")
-    // lightbikeAudio.volume = 0.2;
-    // lightbikeAudio.loop = true;
-    //
+   
+}
+function startSounds(){
+     
+    // $("#bikeAudio").append(`<audio id="bike" preload="auto" autoplay="autoplay"><source src="lightbike.mp3" type="audio/mp3" /></audio>`)
+    const lightbikeAudio = document.getElementById("lightbike");
+    console.log(lightbikeAudio+" "+"1010")
+    lightbikeAudio.volume = 0.1;
+    lightbikeAudio.loop = true;
 }
 
 $("#mainTitle").click(function(){
     $("#startAudio").append(`<audio id="start" preload="auto" autoplay="autoplay"><source src="start.mp3" type="audio/mp3" /></audio>`)
     var startAudio = document.getElementById("start");
-    startAudio.volume = 0.05
-    setTimeout(nextPage, 4000);
-    // lightbikeAudio.play();
-    
-  
+    startAudio.volume = 0.1;
+    setTimeout(window.location.href = 'game.html' , 3800);
 });
 const status = {
 	yellow: 1,
@@ -377,15 +376,20 @@ function changeLightbikeColor(type, position) {
 	}
 	if (player.status !== 1) {
 		$(".buttons").css("opacity", "1");
-		$("#gameOver").show();
+        $("#gameOver").show();
+        const lightbikeAudio = document.getElementById("lightbike");
+        lightbikeAudio.pause();
 	} else if (status.remaining === 0) {
         lightbikeAudio.pause()
 		$(".buttons").css("opacity", "1");
-		$("#gameWon").show();
+        $("#gameWon").show();
+        const lightbikeAudio = document.getElementById("lightbike");
+        lightbikeAudio.pause();
 	}
 }
 
 function resetGame() {
+    const lightbikeAudio = document.getElementById("lightbike");
 	$(".buttons").css("opacity", "0.4")
 	status.remaining = 3
 	player.status = 1
@@ -400,7 +404,8 @@ function resetGame() {
 	$("#blue").css("color", player.trailColor)
 	$("#yellow").css("color", computer.trailColor)
 	$("#red").css("color", computerB.trailColor)
-	$("#green").css("color", computerC.trailColor)
+    $("#green").css("color", computerC.trailColor)
+    lightbikeAudio.play();
 }
 
 function game() {
