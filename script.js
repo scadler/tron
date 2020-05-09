@@ -1,13 +1,16 @@
 function nextPage(){
    window.location.href = 'game.html'
 }
-$("#lightbike").onload = function() {
-     
-    // $("#bikeAudio").append(`<audio id="bike" preload="auto" autoplay="autoplay"><source src="lightbike.mp3" type="audio/mp3" /></audio>`)
+function playAudio(){
     var lightbikeAudio = document.getElementById("lightbike");
-    lightbikeAudio.volume = 0.1;
+    lightbikeAudio.volume = 0.5;
     lightbikeAudio.loop = true;
-    lightbikeAudio.defaultPlaybackRate = 0.7;
+    lightbikeAudio.defaultPlaybackRate = 0.2;
+    lightbikeAudio.currentTime = 0;
+    lightbikeAudio.play();
+}
+$("#lightbike").onload = function() {
+    playAudio()   
 }
 
 $("#mainTitle").click(function(){
@@ -392,7 +395,6 @@ function changeLightbikeColor(type, position) {
 }
 
 function resetGame() {
-    const lightbikeAudio = document.getElementById("lightbike");
 	$(".buttons").css("opacity", "0.4")
 	status.remaining = 3
 	player.status = 1
@@ -408,7 +410,7 @@ function resetGame() {
 	$("#yellow").css("color", computer.trailColor)
 	$("#red").css("color", computerB.trailColor)
     $("#green").css("color", computerC.trailColor)
-    lightbikeAudio.play();
+    playAudio()
 }
 
 function game() {
