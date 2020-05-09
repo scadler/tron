@@ -6,7 +6,7 @@ $("#lightbike").onload = function() {
     // $("#bikeAudio").append(`<audio id="bike" preload="auto" autoplay="autoplay"><source src="lightbike.mp3" type="audio/mp3" /></audio>`)
     const lightbikeAudio = document.getElementById("lightbike");
     console.log(lightbikeAudio+" "+"1010")
-    lightbikeAudio.volume = 0.01;
+    lightbikeAudio.volume = 0.001;
     lightbikeAudio.loop = true;
     lightbikeAudio.defaultPlaybackRate = 0.7;
 }
