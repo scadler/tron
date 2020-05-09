@@ -1,7 +1,7 @@
 function nextPage(){
    
 }
-function startSounds(){
+$("#lightbike").onload = function() {
      
     // $("#bikeAudio").append(`<audio id="bike" preload="auto" autoplay="autoplay"><source src="lightbike.mp3" type="audio/mp3" /></audio>`)
     const lightbikeAudio = document.getElementById("lightbike");
