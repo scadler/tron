@@ -8,6 +8,7 @@ $("#lightbike").onload = function() {
     console.log(lightbikeAudio+" "+"1010")
     lightbikeAudio.volume = 0.01;
     lightbikeAudio.loop = true;
+    lightbikeAudio.defaultPlaybackRate = 0.7;
 }
 
 $("#mainTitle").click(function(){
@@ -184,7 +185,11 @@ function draw(position, direction, color, trailColor, type, state) {
 			}
 			status.remaining = computer.status + computerB.status + computerC.status
 		}
-	}
+    }
+    if (player.status !== 1 && status.remaining === 0) {
+        const lightbikeAudio = document.getElementById("lightbike");
+        lightbikeAudio.pause();
+    }
 }
 
 function checkCollisions(position, direction, type) {
@@ -380,7 +385,6 @@ function changeLightbikeColor(type, position) {
         const lightbikeAudio = document.getElementById("lightbike");
         lightbikeAudio.pause();
 	} else if (status.remaining === 0) {
-        lightbikeAudio.pause()
 		$(".buttons").css("opacity", "1");
         $("#gameWon").show();
         const lightbikeAudio = document.getElementById("lightbike");
@@ -421,7 +425,7 @@ function game() {
 		computerAI(computer.position, computer.direction, "a")
 		computerAI(computerB.position, computerB.direction, "b")
 		computerAI(computerC.position, computerC.direction, "c")
-	}
+    }
 }
 setInterval(game, 100)
 
