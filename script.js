@@ -12,7 +12,7 @@ function playAudio(){
 $("#lightbike").onload = function() {
     playAudio()   
 }
-$("#startMusic").onload = function(){
+$("#body").mousemove = function(){
     $("#startMusic").append(`<audio id="music" preload="auto" loop autoplay><source src="music.mp3" type="audio/mp3"/></audio>`);
 }
 
