@@ -13,7 +13,7 @@ $("#lightbike").onload = function() {
     playAudio()   
 }
 $("#startMusic").onload = function(){
-    $("#startMusic").append(`<audio id="music" preload="auto" loop autoplay><source src="music.mp3" type="audio/mp3"/></audio>`)
+    $("#startMusic").append(`<audio id="music" preload="auto" loop autoplay><source src="music.mp3" type="audio/mp3"/></audio>`);
 }
 
 $("#mainTitle").click(function(){
