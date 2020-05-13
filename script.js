@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$("#startAudio").ready(function(){
     $("#startAudio").append(`<audio id="music" preload="auto" autoplay="autoplay" loop><source src="music.mp3" type="audio/mp3" /></audio>`)
     console.log("Works")
 });
