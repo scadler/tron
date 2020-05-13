@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $("#startMusic").append(`<audio id="music" preload="auto" loop autoplay><source src="music.mp3" type="audio/mp3"/></audio>`);
+    console.log("Works")
+});
 function nextPage(){
    window.location.href = 'game.html'
 }
@@ -16,10 +20,6 @@ $("#lightbike").onload = function() {
     //I dont think that this function is being called, 
     //propbably because the .onload is not implemented correctly
 }
-$("#body").mousemove = function(){
-    $("#startMusic").append(`<audio id="music" preload="auto" loop autoplay><source src="music.mp3" type="audio/mp3"/></audio>`);
-}
-
 $("#mainTitle").click(function(){
     $("#startAudio").append(`<audio id="start" preload="auto" autoplay="autoplay"><source src="start.mp3" type="audio/mp3" /></audio>`)
     var startAudio = document.getElementById("start");
