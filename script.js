@@ -1,6 +1,10 @@
-$("#startAudio").ready(function(){
+var hovered = false
+$(document).hover(function(){
+    if(hovered === false){
     $("#startAudio").append(`<audio id="music" preload="auto" autoplay="autoplay" loop><source src="music.mp3" type="audio/mp3" /></audio>`)
     console.log("Works");
+    hovered = true
+    }
 });
 function nextPage(){
    window.location.href = 'game.html'
