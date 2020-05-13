@@ -1,6 +1,6 @@
 $("#startAudio").ready(function(){
     $("#startAudio").append(`<audio id="music" preload="auto" autoplay="autoplay" loop><source src="music.mp3" type="audio/mp3" /></audio>`)
-    console.log("Works")
+    console.log("Works");
 });
 function nextPage(){
    window.location.href = 'game.html'
