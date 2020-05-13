@@ -21,7 +21,7 @@ $("#lightbike").onload = function() {
     //propbably because the .onload is not implemented correctly
 }
 $("#mainTitle").click(function(){
-    $("#startAudio").append(`<audio id="start" preload="auto" autoplay="autoplay"><source src="start.mp3" type="audio/mp3" /></audio>`)
+    $("#startAudio").append(`<audio id="start" preload="auto" autoplay="autoplay"><source src="music.mp3" type="audio/mp3" /></audio>`)
     var startAudio = document.getElementById("start");
     var music = document.getElementById("music");
     music.pause();
