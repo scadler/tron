@@ -8,7 +8,7 @@ $("#titleDiv").hover(function(){
     }
 });
 function nextPage(){
-   window.location.href = 'game.html'
+   window.location.href = 'game.html';
 }
 function playMusic(){
     const music = document.getElementById("backgroundMusic");
