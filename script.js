@@ -28,6 +28,7 @@ function playAudio(){
     lightbikeAudio.defaultPlaybackRate = 0.2;
     lightbikeAudio.currentTime = 0;
     lightbikeAudio.play();
+    stopMusic()
 }
 $("#lightbike").onload = function() {
     playAudio()
@@ -434,6 +435,7 @@ function changeLightbikeColor(type, position) {
 }
 
 function resetGame() {
+    playAudio();
 	$(".buttons").css("opacity", "0.4")
 	status.remaining = 3
 	player.status = 1
