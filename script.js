@@ -1,10 +1,8 @@
 var hovered = false
-$(document).hover(function(){
-    if(hovered === false){
-    $("#startAudio").append(`<audio id="music" preload="auto" autoplay="autoplay" loop><source src="music.mp3" type="audio/mp3" /></audio>`)
-    console.log("Works");
-    hovered = true
-    }
+$(document).ready(function(){
+    const music = document.getElementById("indexMusic");
+    music.volume = 0.2;
+    music.play();
 });
 function nextPage(){
    window.location.href = 'game.html'
@@ -32,7 +30,8 @@ $("#lightbike").onload = function() {
     //propbably because the .onload is not implemented correctly
 }
 $("#mainTitle").click(function(){
-    $("#startAudio").empty();
+    const music = document.getElementById("indexMusic");
+    music.pause();
     $("#startAudio").append(`<audio id="start" preload="auto" autoplay="autoplay"><source src="start.mp3" type="audio/mp3" /></audio>`)
     var startAudio = document.getElementById("start");
     startAudio.volume = 0.2;
