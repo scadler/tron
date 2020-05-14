@@ -406,12 +406,18 @@ function changeLightbikeColor(type, position) {
         $("#gameOver").show();
         const lightbikeAudio = document.getElementById("lightbike");
         lightbikeAudio.pause();
+        const endMusic = document.getElementById("endMusic");
+        endMusic.currentTime = 0;
+        endMusic.play();
         playMusic()
 	} else if (status.remaining === 0) {
 		$(".buttons").css("opacity", "1");
         $("#gameWon").show();
         const lightbikeAudio = document.getElementById("lightbike");
         lightbikeAudio.pause();
+        const endMusic = document.getElementById("endMusic");
+        endMusic.currentTime = 0;
+        endMusic.play();
         playMusic()
 	}
 }
@@ -434,6 +440,8 @@ function resetGame() {
     $("#green").css("color", computerC.trailColor)
     stopMusic()
     playAudio()
+    const endMusic = document.getElementById("endMusic");
+    endMusic.pause();
 }
 
 function game() {
