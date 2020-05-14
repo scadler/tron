@@ -450,12 +450,12 @@ function resetGame() {
 	$("#red").css("color", computerB.trailColor)
     $("#green").css("color", computerC.trailColor)
     stopMusic()
+    const endMusic = document.getElementById("endMusic");
+    endMusic.pause();
     const start = document.getElementById("start");
     start.volume = 0.2;
     start.play();
-    setTimeout(playAudio, 3341);
-    const endMusic = document.getElementById("endMusic");
-    endMusic.pause();
+    // setTimeout(playAudio, 3341);
 }
 
 function game() {
