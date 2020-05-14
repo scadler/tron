@@ -1,5 +1,5 @@
 var hovered = false
-$(body).hover(function(){
+$("#titleDiv").hover(function(){
     if(hovered === false){
         hovered = true;
         const music = document.getElementById("indexMusic");
