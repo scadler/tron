@@ -12,7 +12,7 @@ function nextPage(){
 }
 function playMusic(){
     const music = document.getElementById("backgroundMusic");
-    music.volume = 0.1;
+    music.volume = 0.15;
     music.play();
 }
 function stopMusic(){
@@ -410,6 +410,8 @@ function changeLightbikeColor(type, position) {
         const lightbikeAudio = document.getElementById("lightbike");
         lightbikeAudio.pause();
         const endMusic = document.getElementById("endMusic");
+        var crash = document.getElementById("crash");
+        crash.pause();
         endMusic.currentTime = 0;
         endMusic.play();
         playMusic()
@@ -419,6 +421,8 @@ function changeLightbikeColor(type, position) {
         const lightbikeAudio = document.getElementById("lightbike");
         lightbikeAudio.pause();
         const endMusic = document.getElementById("endMusic");
+        var crash = document.getElementById("crash");
+        crash.pause()
         endMusic.currentTime = 0;
         endMusic.play();
         playMusic()
