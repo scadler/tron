@@ -12,7 +12,7 @@ function nextPage(){
 }
 function playMusic(){
     const music = document.getElementById("backgroundMusic");
-    music.volume = 0.15;
+    music.volume = 0.3;
     music.play();
 }
 function stopMusic(){
@@ -414,7 +414,7 @@ function changeLightbikeColor(type, position) {
         crash.pause();
         endMusic.currentTime = 0;
         endMusic.play();
-        playMusic()
+        setTimeout(playMusic, 4576);
 	} else if (status.remaining === 0) {
 		$(".buttons").css("opacity", "1");
         $("#gameWon").show();
@@ -425,7 +425,7 @@ function changeLightbikeColor(type, position) {
         crash.pause()
         endMusic.currentTime = 0;
         endMusic.play();
-        playMusic()
+        setTimeout(playMusic, 4576);
 	}
 }
 
