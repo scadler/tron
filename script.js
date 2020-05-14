@@ -11,6 +11,7 @@ function nextPage(){
 }
 function playMusic(){
     const music = document.getElementById("backgroundMusic");
+    music.volume = 0.2;
     music.play();
 }
 function stopMusic(){
@@ -502,6 +503,7 @@ function changeColors(i){
 $("#changeColors").click(function() {
 	if (player.status !== 1 || status.remaining === 0) {
         var click = document.getElementById("click");
+        click.currentTime = 0;
         click.play()
 		if (status.colorsRetro === 0) {
 			status.colorsRetro = 1
@@ -562,6 +564,7 @@ $("#changeColors").click(function() {
 $("#obstacleButton").click(function() {
 	if (player.status !== 1 || status.remaining === 0) {
         var click = document.getElementById("click");
+        click.currentTime = 0;
         click.play();
 		status.obstacles += 1
 		status.obstacles = status.obstacles % 3
