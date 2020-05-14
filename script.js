@@ -452,9 +452,10 @@ function resetGame() {
     stopMusic()
     const endMusic = document.getElementById("endMusic");
     endMusic.pause();
-    const start = document.getElementById("start");
-    start.volume = 0.2;
-    start.play();
+    // const start = document.getElementById("start");
+    // start.volume = 0.2;
+    // start.play();
+    playAudio();
     // setTimeout(playAudio, 3341);
 }
 
