@@ -24,8 +24,6 @@ function playAudio(){
     lightbikeAudio.defaultPlaybackRate = 0.2;
     lightbikeAudio.currentTime = 0;
     lightbikeAudio.play();
-    console.log("twqfeuuwqfgi)")
-    
 }
 $("#lightbike").onload = function() {
     playAudio()
