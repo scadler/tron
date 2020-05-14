@@ -1,8 +1,11 @@
 var hovered = false
-$(document).ready(function(){
-    const music = document.getElementById("indexMusic");
-    music.volume = 0.2;
-    music.play();
+$(document).hover(function(){
+    if(hovered === false){
+        hovered = true;
+        const music = document.getElementById("indexMusic");
+        music.volume = 0.2;
+        music.play();
+    }
 });
 function nextPage(){
    window.location.href = 'game.html'
