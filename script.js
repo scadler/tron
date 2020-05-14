@@ -9,6 +9,14 @@ $(document).hover(function(){
 function nextPage(){
    window.location.href = 'game.html'
 }
+function playMusic(){
+    const music = document.getElementById("backgroundMusic");
+    music.play();
+}
+function stopMusic(){
+    const music = document.getElementById("backgroundMusic");
+    music.pause();
+}
 function playAudio(){
     var lightbikeAudio = document.getElementById("lightbike");
     lightbikeAudio.volume = 0.5;
@@ -400,11 +408,13 @@ function changeLightbikeColor(type, position) {
         $("#gameOver").show();
         const lightbikeAudio = document.getElementById("lightbike");
         lightbikeAudio.pause();
+        playMusic()
 	} else if (status.remaining === 0) {
 		$(".buttons").css("opacity", "1");
         $("#gameWon").show();
         const lightbikeAudio = document.getElementById("lightbike");
         lightbikeAudio.pause();
+        playMusic()
 	}
 }
 
@@ -424,6 +434,7 @@ function resetGame() {
 	$("#yellow").css("color", computer.trailColor)
 	$("#red").css("color", computerB.trailColor)
     $("#green").css("color", computerC.trailColor)
+    stopMusic()
     playAudio()
 }
 
