@@ -414,6 +414,7 @@ function changeLightbikeColor(type, position) {
         crash.pause();
         endMusic.currentTime = 0;
         endMusic.play();
+        endMusic.volume = 0.5
         setTimeout(playMusic, 4576);
 	} else if (status.remaining === 0) {
 		$(".buttons").css("opacity", "1");
@@ -425,6 +426,7 @@ function changeLightbikeColor(type, position) {
         crash.pause()
         endMusic.currentTime = 0;
         endMusic.play();
+        endMusic.volume = 0.5
         setTimeout(playMusic, 4576);
 	}
 }
@@ -447,7 +449,7 @@ function resetGame() {
     $("#green").css("color", computerC.trailColor)
     stopMusic()
     const start = document.getElementById("start");
-    start.volume = 0.3;
+    start.volume = 0.2;
     start.play();
     setTimeout(playAudio, 3341);
     const endMusic = document.getElementById("endMusic");
