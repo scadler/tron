@@ -35,8 +35,8 @@ $("#lightbike").onload = function() {
 $("#mainTitle").click(function(){
     const music = document.getElementById("indexMusic");
     music.pause();
-    $("#startAudio").append(`<audio id="start" preload="auto" autoplay="autoplay"><source src="start.mp3" type="audio/mp3" /></audio>`)
-    var startAudio = document.getElementById("start");
+    $("#startAudio").append(`<audio id="insertCoin" preload="auto" autoplay="autoplay"><source src="insertCoin.mp3" type="audio/mp3" /></audio>`)
+    var startAudio = document.getElementById("insertCoin");
     startAudio.volume = 0.2;
     setTimeout(nextPage, 3800);
 });
@@ -446,7 +446,10 @@ function resetGame() {
 	$("#red").css("color", computerB.trailColor)
     $("#green").css("color", computerC.trailColor)
     stopMusic()
-    playAudio()
+    const start = document.getElementById("start");
+    start.volume = 0.3;
+    start.play();
+    setTimeout(playAudio, 3341);
     const endMusic = document.getElementById("endMusic");
     endMusic.pause();
 }
