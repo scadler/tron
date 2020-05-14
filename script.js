@@ -1,5 +1,5 @@
 var hovered = false
-$(document).hover(function(){
+$(body).hover(function(){
     if(hovered === false){
         hovered = true;
         const music = document.getElementById("indexMusic");
@@ -12,7 +12,7 @@ function nextPage(){
 }
 function playMusic(){
     const music = document.getElementById("backgroundMusic");
-    music.volume = 0.2;
+    music.volume = 0.1;
     music.play();
 }
 function stopMusic(){
