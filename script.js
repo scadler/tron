@@ -20,6 +20,8 @@ function stopMusic(){
     music.pause();
 }
 function playAudio(){
+    const endMusic = document.getElementById("endMusic");
+    endMusic.pause();
     var lightbikeAudio = document.getElementById("lightbike");
     lightbikeAudio.volume = 0.5;
     lightbikeAudio.loop = true;
