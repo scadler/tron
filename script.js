@@ -414,24 +414,24 @@ function changeLightbikeColor(type, position) {
         $("#gameOver").show();
         const lightbikeAudio = document.getElementById("lightbike");
         lightbikeAudio.pause();
-        const start = document.getElementById("start");
-        var crash = document.getElementById("crash");
-        crash.pause();
-        start.currentTime = 0;
-        start.play();
-        start.volume = 0.5
-        setTimeout(playMusic, 4576);
-	} else if (status.remaining === 0) {
-		$(".buttons").css("opacity", "1");
-        $("#gameWon").show();
-        const lightbikeAudio = document.getElementById("lightbike");
-        lightbikeAudio.pause();
         const endMusic = document.getElementById("endMusic");
         var crash = document.getElementById("crash");
         crash.pause()
         endMusic.currentTime = 0;
         endMusic.play();
         endMusic.volume = 0.5
+        setTimeout(playMusic, 4576);
+	} else if (status.remaining === 0) {
+		$(".buttons").css("opacity", "1");
+        $("#gameWon").show();
+        const lightbikeAudio = document.getElementById("lightbike");
+        lightbikeAudio.pause();
+        const start = document.getElementById("start");
+        var crash = document.getElementById("crash");
+        crash.pause();
+        start.currentTime = 0;
+        start.play();
+        start.volume = 0.3
         setTimeout(playMusic, 4576);
 	}
 }
@@ -456,6 +456,8 @@ function resetGame() {
     stopMusic()
     const endMusic = document.getElementById("endMusic");
     endMusic.pause();
+    const start = document.getElementById("start");
+    start.pause();
     // const start = document.getElementById("start");
     // start.volume = 0.2;
     // start.play();
