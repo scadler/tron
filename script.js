@@ -10,6 +10,13 @@ $("#titleDiv").hover(function(){
 function nextPage(){
    window.location.href = 'game.html';
 }
+function turnSound(){
+    if (player.status === 1 && status.remaining !== 0) {
+        var turn = document.getElementById("turn");
+        turn.currentTime = 0;
+        turn.play();
+    }
+}
 function playMusic(){
     if (player.status !== 1 || status.remaining === 0) {
         const music = document.getElementById("backgroundMusic");
@@ -244,6 +251,7 @@ var newDirec = 0;
 function computerAI(pos, dir, type) {
 	status.a += 1
 	if (Math.random() - 0.99 > 0) {
+        turnSound()
 		status.a = 0
 		var b = Math.floor(Math.random() * 4)
 		var ranDirec = (b === 0) ? -1 : (b === 1) ? 1 : (b === 2) ? 100 : -100
@@ -264,6 +272,7 @@ function computerAI(pos, dir, type) {
 	var cNewPos = bNewPos + dir
 	var dNewPos = cNewPos + dir
 	if ($("#" + newPos).css("background-color") !== status.floorColor || $("#" + aNewPos).css("background-color") !== status.floorColor || $("#" + bNewPos).css("background-color") !== status.floorColor || $("#" + cNewPos).css("background-color") !== status.floorColor || $("#" + dNewPos).css("background-color") !== status.floorColor) {
+        turnSound()
 		if (dir % 100 === 0) {
 			newDirec = (Math.random() - 0.5 > 0) ? -1 : 1
 			possibleNewPos = pos + newDirec
@@ -307,6 +316,7 @@ function computerAI(pos, dir, type) {
 		}
 	}
 	if ($("#" + newPos).css("background-color") !== status.floorColor) {
+        turnSound()
 		var up = computer.position - 100
 		var left = computer.position - 1
 		var down = computer.position + 100
@@ -492,19 +502,23 @@ function keyPressed(e) {
 	key = e.key
 	if (key == "a") {
 		if (player.direction !== 1) {
-			player.direction = -1
+            player.direction = -1
+            turnSound()
 		}
 	} else if (key == "d") {
 		if (player.direction !== -1) {
-			player.direction = 1
+            player.direction = 1
+            turnSound()
 		}
 	} else if (key == "w") {
-		if (player.direction !== 100) {
+        if (player.direction !== 100) 
+        turnSound(){
 			player.direction = -100
 		}
 	} else if (key == "s") {
 		if (player.direction !== -100) {
-			player.direction = 100
+            player.direction = 100
+            turnSound()
 		}
 	} else if (key == " ") {
 		e.preventDefault();
