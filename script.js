@@ -1,56 +1,69 @@
 var hovered = false
-$("#titleDiv").hover(function(){
-    if(hovered === false){
-        hovered = true;
-        const music = document.getElementById("indexMusic");
-        music.volume = 0.2;
-        music.play();
-    }
+$("#titleDiv").hover(function() {
+	if (hovered === false) {
+		hovered = true;
+		const music = document.getElementById("indexMusic");
+		music.volume = 0.2;
+		music.play();
+	}
 });
-function nextPage(){
-   window.location.href = 'game.html';
+
+function nextPage() {
+	window.location.href = 'game.html';
 }
-function turnSound(){
-    if (player.status === 1 && status.remaining !== 0) {
-        var turn = document.getElementById("turn");
-        turn.currentTime = 0;
-        turn.play();
-    }
+
+function turnSound() {
+	//Add turn sound effect and make sure it only plays at approrpiate levels, on example of this is not happening
+	//is when the user holds down a key the sound plays constantly
+	//
+	//
+	//
+	//
+	//
+	// if (player.status === 1 && status.remaining !== 0) {
+	// var turn = document.getElementById("turn");
+	// turn.currentTime = 0;
+	// turn.play();
+	// }
 }
-function playMusic(){
-    if (player.status !== 1 || status.remaining === 0) {
-        const music = document.getElementById("backgroundMusic");
-        music.volume = 0.3;
-        music.play();
-    }
+
+function playMusic() {
+	if (player.status !== 1 || status.remaining === 0) {
+		const music = document.getElementById("backgroundMusic");
+		music.volume = 0.3;
+		music.play();
+	}
 }
-function stopMusic(){
-    const music = document.getElementById("backgroundMusic");
-    music.pause();
+
+function stopMusic() {
+	const music = document.getElementById("backgroundMusic");
+	music.pause();
 }
-function playAudio(){
-    const endMusic = document.getElementById("endMusic");
-    endMusic.pause();
-    var lightbikeAudio = document.getElementById("lightbike");
-    lightbikeAudio.volume = 0.5;
-    lightbikeAudio.loop = true;
-    lightbikeAudio.defaultPlaybackRate = 0.2;
-    lightbikeAudio.currentTime = 0;
-    lightbikeAudio.play();
-    stopMusic()
+
+function playAudio() {
+	const endMusic = document.getElementById("endMusic");
+	endMusic.pause();
+	var lightbikeAudio = document.getElementById("lightbike");
+	lightbikeAudio.volume = 0.5;
+	lightbikeAudio.loop = true;
+	lightbikeAudio.defaultPlaybackRate = 0.2;
+	lightbikeAudio.currentTime = 0;
+	lightbikeAudio.play();
+	stopMusic()
 }
 $("#lightbike").onload = function() {
-    playAudio()
-    //I dont think that this function is being called, 
-    //propbably because the .onload is not implemented correctly
+	playAudio()
+	//I dont think that this function is being called,
+	//propbably because the .onload is not implemented correctly
 }
-$("#mainTitle").click(function(){
-    const music = document.getElementById("indexMusic");
-    music.pause();
-    $("#startAudio").append(`<audio id="insertCoin" preload="auto" autoplay="autoplay"><source src="insertCoin.mp3" type="audio/mp3" /></audio>`)
-    var startAudio = document.getElementById("insertCoin");
-    startAudio.volume = 0.2;
-    setTimeout(nextPage, 3800);
+$("#mainTitle").click(function() {
+	const music = document.getElementById("indexMusic");
+	music.pause();
+	$("#startAudio").append(`<audio id="insertCoin" preload="auto" autoplay="autoplay">
+	<source src="insertCoin.mp3" type="audio/mp3" /></audio>`)
+	var startAudio = document.getElementById("insertCoin");
+	startAudio.volume = 0.2;
+	setTimeout(nextPage, 3800);
 });
 const status = {
 	yellow: 1,
@@ -66,8 +79,8 @@ const status = {
 	b: 51,
 	colorsRetro: 1,
 	remaining: 3,
-    obstacles: 0,
-    floorColor: "rgb(0, 0, 17)"
+	obstacles: 0,
+	floorColor: "rgb(0, 0, 17)"
 }
 var player = {
 	position: 2020,
@@ -107,10 +120,11 @@ function createGrid() {
 	resetText()
 	var i = 0;
 	while (i < 10000) {
-		$("#grid").append(`<div class="cell" id=${i}></div>`);
+		$("#grid").append(`<div class="cell" id=${i}>
+	</div>`);
 		i++
-    }
-    $(".cell").css("background-color",status.floorColor)
+	}
+	$(".cell").css("background-color", status.floorColor)
 	var i = 0
 	if (status.obstacles === 1) {
 		createObstacles()
@@ -132,9 +146,8 @@ function createGrid() {
 		$(".cell").css({
 			"border-right": "1px solid #000000",
 			"border-bottom": "1px solid #000000",
-        })
-    }
-    else if (status.colorsRetro === 3) {
+		})
+	} else if (status.colorsRetro === 3) {
 		$(".cell").css({
 			"border-right": "1px solid #090909",
 			"border-bottom": "1px solid #090909",
@@ -144,24 +157,18 @@ function createGrid() {
 			"border-right": "1px solid #151515",
 			"border-bottom": "1px solid #151515",
 		})
-    }
+	}
 }
 
 function createObstacles() {
 	var xA = 1010
 	while (xA < 1090) {
-        $("#" + xA).css("background-color", player.wallColor)
-        var id = xA + 8000    
-        $("#" + id).css("background-color", player.wallColor)
-		xA++
-    }
-    var xB = 1010
-    while (xB < 9101) {
-        $("#" + xB).css("background-color", player.wallColor)
-        var idB = xB + 80
-        $("#" + idB).css("background-color", player.wallColor)
-		xB += 100
-    }
+		$("#" + xA).css("background-color", player.wallColor) var id = xA + 8000 $("#" + id).css("background-color", player.wallColor) xA++
+	}
+	var xB = 1010
+	while (xB < 9101) {
+		$("#" + xB).css("background-color", player.wallColor) var idB = xB + 80 $("#" + idB).css("background-color", player.wallColor) xB += 100
+	}
 }
 
 function createWalls() {
@@ -220,11 +227,11 @@ function draw(position, direction, color, trailColor, type, state) {
 			}
 			status.remaining = computer.status + computerB.status + computerC.status
 		}
-    }
-    if (player.status !== 1 && status.remaining === 0) {
-        const lightbikeAudio = document.getElementById("lightbike");
-        lightbikeAudio.pause();
-    }
+	}
+	if (player.status !== 1 && status.remaining === 0) {
+		const lightbikeAudio = document.getElementById("lightbike");
+		lightbikeAudio.pause();
+	}
 }
 
 function checkCollisions(position, direction, type) {
@@ -251,7 +258,7 @@ var newDirec = 0;
 function computerAI(pos, dir, type) {
 	status.a += 1
 	if (Math.random() - 0.99 > 0) {
-        turnSound()
+		turnSound()
 		status.a = 0
 		var b = Math.floor(Math.random() * 4)
 		var ranDirec = (b === 0) ? -1 : (b === 1) ? 1 : (b === 2) ? 100 : -100
@@ -272,7 +279,7 @@ function computerAI(pos, dir, type) {
 	var cNewPos = bNewPos + dir
 	var dNewPos = cNewPos + dir
 	if ($("#" + newPos).css("background-color") !== status.floorColor || $("#" + aNewPos).css("background-color") !== status.floorColor || $("#" + bNewPos).css("background-color") !== status.floorColor || $("#" + cNewPos).css("background-color") !== status.floorColor || $("#" + dNewPos).css("background-color") !== status.floorColor) {
-        turnSound()
+		turnSound()
 		if (dir % 100 === 0) {
 			newDirec = (Math.random() - 0.5 > 0) ? -1 : 1
 			possibleNewPos = pos + newDirec
@@ -316,7 +323,7 @@ function computerAI(pos, dir, type) {
 		}
 	}
 	if ($("#" + newPos).css("background-color") !== status.floorColor) {
-        turnSound()
+		turnSound()
 		var up = computer.position - 100
 		var left = computer.position - 1
 		var down = computer.position + 100
@@ -360,7 +367,7 @@ function computerAI(pos, dir, type) {
 				computerC.direction = 1
 			}
 		}
-		//this last line is to make sure that when the last turn was up but the case to turn down is the only one to evaulate true the bike can still turn down 
+		//this last line is to make sure that when the last turn was up but the case to turn down is the only one to evaulate true the bike can still turn down
 		else if ($("#" + down).css("background-color") === status.floorColor) {
 			if (type === "a") {
 				computer.direction = 100
@@ -392,8 +399,8 @@ function computerAI(pos, dir, type) {
 }
 
 function changeLightbikeColor(type, position) {
-    var crash = document.getElementById("crash");
-    crash.play();
+	var crash = document.getElementById("crash");
+	crash.play();
 	$("." + type).addClass(type + "Trail")
 	$("#" + position).addClass(type + "Trail")
 	$("#2020").addClass("playerTrail")
@@ -421,33 +428,33 @@ function changeLightbikeColor(type, position) {
 	}
 	if (player.status !== 1) {
 		$(".buttons").css("opacity", "1");
-        $("#gameOver").show();
-        const lightbikeAudio = document.getElementById("lightbike");
-        lightbikeAudio.pause();
-        const endMusic = document.getElementById("endMusic");
-        var crash = document.getElementById("crash");
-        crash.pause()
-        endMusic.currentTime = 0;
-        endMusic.play();
-        endMusic.volume = 0.5
-        setTimeout(playMusic, 4576);
+		$("#gameOver").show();
+		const lightbikeAudio = document.getElementById("lightbike");
+		lightbikeAudio.pause();
+		const endMusic = document.getElementById("endMusic");
+		var crash = document.getElementById("crash");
+		crash.pause()
+		endMusic.currentTime = 0;
+		endMusic.play();
+		endMusic.volume = 0.5
+		setTimeout(playMusic, 4576);
 	} else if (status.remaining === 0) {
 		$(".buttons").css("opacity", "1");
-        $("#gameWon").show();
-        const lightbikeAudio = document.getElementById("lightbike");
-        lightbikeAudio.pause();
-        const start = document.getElementById("start");
-        var crash = document.getElementById("crash");
-        crash.pause();
-        start.currentTime = 0;
-        start.play();
-        start.volume = 0.3
-        setTimeout(playMusic, 3314);
+		$("#gameWon").show();
+		const lightbikeAudio = document.getElementById("lightbike");
+		lightbikeAudio.pause();
+		const start = document.getElementById("start");
+		var crash = document.getElementById("crash");
+		crash.pause();
+		start.currentTime = 0;
+		start.play();
+		start.volume = 0.3
+		setTimeout(playMusic, 3314);
 	}
 }
 
 function resetGame() {
-    playAudio();
+	playAudio();
 	$(".buttons").css("opacity", "0.4")
 	status.remaining = 3
 	player.status = 1
@@ -462,17 +469,17 @@ function resetGame() {
 	$("#blue").css("color", player.trailColor)
 	$("#yellow").css("color", computer.trailColor)
 	$("#red").css("color", computerB.trailColor)
-    $("#green").css("color", computerC.trailColor)
-    stopMusic()
-    const endMusic = document.getElementById("endMusic");
-    endMusic.pause();
-    const start = document.getElementById("start");
-    start.pause();
-    // const start = document.getElementById("start");
-    // start.volume = 0.2;
-    // start.play();
-    playAudio();
-    // setTimeout(playAudio, 3341);
+	$("#green").css("color", computerC.trailColor)
+	stopMusic()
+	const endMusic = document.getElementById("endMusic");
+	endMusic.pause();
+	const start = document.getElementById("start");
+	start.pause();
+	// const start = document.getElementById("start");
+	// start.volume = 0.2;
+	// start.play();
+	playAudio();
+	// setTimeout(playAudio, 3341);
 }
 
 function game() {
@@ -488,13 +495,13 @@ function game() {
 		computerAI(computer.position, computer.direction, "a")
 		computerAI(computerB.position, computerB.direction, "b")
 		computerAI(computerC.position, computerC.direction, "c")
-    }
+	}
 }
 setInterval(game, 100)
 
 function resetGrid() {
 	$("#grid").empty();
-    createGrid();
+	createGrid();
 }
 document.addEventListener('keydown', keyPressed)
 
@@ -502,23 +509,23 @@ function keyPressed(e) {
 	key = e.key
 	if (key == "a") {
 		if (player.direction !== 1) {
-            player.direction = -1
-            turnSound()
+			player.direction = -1
+			turnSound()
 		}
 	} else if (key == "d") {
 		if (player.direction !== -1) {
-            player.direction = 1
-            turnSound()
+			player.direction = 1
+			turnSound()
 		}
 	} else if (key == "w") {
-        if (player.direction !== 100) {
-            turnSound()
+		if (player.direction !== 100) {
+			turnSound()
 			player.direction = -100
 		}
 	} else if (key == "s") {
 		if (player.direction !== -100) {
-            player.direction = 100
-            turnSound()
+			player.direction = 100
+			turnSound()
 		}
 	} else if (key == " ") {
 		e.preventDefault();
@@ -528,25 +535,25 @@ function keyPressed(e) {
 }
 //try to use a format like this to compress the code, this one wont work well
 // var colorScheme = {
-//     vibrant = ["#0000FF","#8888FF","#FFFF00","#FFFF88","#FF0000","#FF8888","#00FF00","#88FF88","#0000a0","rgb(0, 0, 17)"],
+// vibrant = ["#0000FF","#8888FF","#FFFF00","#FFFF88","#FF0000","#FF8888","#00FF00","#88FF88","#0000a0","rgb(0, 0, 17)"],
 // }
-function changeColors(i){
+function changeColors(i) {
 	player.trailColor = colorScheme.vibrant[0]
-    player.color = colorScheme.vibrant[1]
-    computer.trailColor = colorScheme.vibrant[2]
+	player.color = colorScheme.vibrant[1]
+	computer.trailColor = colorScheme.vibrant[2]
 	computer.color = colorScheme.vibrant[3]
 	computerB.trailColor = colorScheme.vibrant[4]
 	computerB.color = colorScheme.vibrant[5]
-    computerC.trailColor = colorScheme.vibrant[6]
+	computerC.trailColor = colorScheme.vibrant[6]
 	computerC.color = colorScheme.vibrant[7]
-    player.wallColor = colorScheme.vibrant[8]
-    status.floorColor = colorScheme.vibrant[9]
+	player.wallColor = colorScheme.vibrant[8]
+	status.floorColor = colorScheme.vibrant[9]
 }
 $("#changeColors").click(function() {
 	if (player.status !== 1 || status.remaining === 0) {
-        var click = document.getElementById("click");
-        click.currentTime = 0;
-        click.play()
+		var click = document.getElementById("click");
+		click.currentTime = 0;
+		click.play()
 		if (status.colorsRetro === 0) {
 			status.colorsRetro = 1
 			$("#buttonText").text("VIBRANT")
@@ -558,8 +565,8 @@ $("#changeColors").click(function() {
 			computerB.color = "#FF8888"
 			computerC.trailColor = "#00FF00"
 			computerC.color = "#88FF88"
-            player.wallColor = "#0000a0"
-            status.floorColor = "rgb(0, 0, 17)"
+			player.wallColor = "#0000a0"
+			status.floorColor = "rgb(0, 0, 17)"
 		} else if (status.colorsRetro === 1) {
 			status.colorsRetro = 2
 			$("#buttonText").text("CLASSIC")
@@ -571,8 +578,8 @@ $("#changeColors").click(function() {
 			computerB.color = "#BB8924"
 			computerC.trailColor = "#FDDA47"
 			computerC.color = "#BB8924"
-            player.wallColor = "#6A908D"
-            status.floorColor = "rgb(1, 4, 33)"
+			player.wallColor = "#6A908D"
+			status.floorColor = "rgb(1, 4, 33)"
 		} else if (status.colorsRetro === 2) {
 			status.colorsRetro = 3
 			$("#buttonText").text("REVISED")
@@ -584,10 +591,9 @@ $("#changeColors").click(function() {
 			computerB.color = "#FFE988"
 			computerC.trailColor = "#FE9C00"
 			computerC.color = "#FFE988"
-            player.wallColor = "#494949"
-            status.floorColor = "rgb(0, 0, 0)"
-        }
-        else if (status.colorsRetro === 3) {
+			player.wallColor = "#494949"
+			status.floorColor = "rgb(0, 0, 0)"
+		} else if (status.colorsRetro === 3) {
 			status.colorsRetro = 0
 			$("#buttonText").text("SILVERY")
 			computer.trailColor = "#888888"
@@ -598,16 +604,16 @@ $("#changeColors").click(function() {
 			computerB.color = "#555555"
 			computerC.trailColor = "#888888"
 			computerC.color = "#555555"
-            player.wallColor = "404040"
-            status.floorColor = "rgb(10, 10, 10)"
+			player.wallColor = "404040"
+			status.floorColor = "rgb(10, 10, 10)"
 		}
 	}
 });
 $("#obstacleButton").click(function() {
 	if (player.status !== 1 || status.remaining === 0) {
-        var click = document.getElementById("click");
-        click.currentTime = 0;
-        click.play();
+		var click = document.getElementById("click");
+		click.currentTime = 0;
+		click.play();
 		status.obstacles += 1
 		status.obstacles = status.obstacles % 3
 		if (status.obstacles === 0) {
