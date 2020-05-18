@@ -511,8 +511,8 @@ function keyPressed(e) {
             turnSound()
 		}
 	} else if (key == "w") {
-        if (player.direction !== 100) 
-        turnSound(){
+        if (player.direction !== 100) {
+            turnSound()
 			player.direction = -100
 		}
 	} else if (key == "s") {
