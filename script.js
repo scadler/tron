@@ -432,7 +432,7 @@ function changeLightbikeColor(type, position) {
         start.currentTime = 0;
         start.play();
         start.volume = 0.3
-        setTimeout(playMusic, 4576);
+        setTimeout(playMusic, 3314);
 	}
 }
 
