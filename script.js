@@ -11,9 +11,11 @@ function nextPage(){
    window.location.href = 'game.html';
 }
 function playMusic(){
-    const music = document.getElementById("backgroundMusic");
-    music.volume = 0.3;
-    music.play();
+    if (player.status !== 1 || status.remaining === 0) {
+        const music = document.getElementById("backgroundMusic");
+        music.volume = 0.3;
+        music.play();
+    }
 }
 function stopMusic(){
     const music = document.getElementById("backgroundMusic");
@@ -412,12 +414,12 @@ function changeLightbikeColor(type, position) {
         $("#gameOver").show();
         const lightbikeAudio = document.getElementById("lightbike");
         lightbikeAudio.pause();
-        const endMusic = document.getElementById("endMusic");
+        const start = document.getElementById("start");
         var crash = document.getElementById("crash");
         crash.pause();
-        endMusic.currentTime = 0;
-        endMusic.play();
-        endMusic.volume = 0.5
+        start.currentTime = 0;
+        start.play();
+        start.volume = 0.5
         setTimeout(playMusic, 4576);
 	} else if (status.remaining === 0) {
 		$(".buttons").css("opacity", "1");
