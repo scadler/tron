@@ -13,11 +13,11 @@ function nextPage(){
 }
 function turnSound(){
     //make turnsound play at appriopriate amounts
-    // if (player.status === 1 && status.remaining !== 0) {
-    //     var turn = document.getElementById("turn");
-    //     turn.currentTime = 0;
-    //     turn.play();
-    // }
+    if (player.status === 1 && status.remaining !== 0) {
+        var turn = document.getElementById("turn");
+        turn.currentTime = 0;
+        turn.play();
+    }
 }
 function playMusic(){
     if (player.status !== 1 || status.remaining === 0) {
@@ -253,12 +253,12 @@ var newDirec = 0;
 function computerAI(pos, dir, type) {
 	status.a += 1
 	if (Math.random() - 0.99 > 0) {
-        turnSound()
 		status.a = 0
 		var b = Math.floor(Math.random() * 4)
 		var ranDirec = (b === 0) ? -1 : (b === 1) ? 1 : (b === 2) ? 100 : -100
 		var possibleNextPos = pos + ranDirec
 		if ($("#" + possibleNextPos).css("background-color") === status.floorColor) {
+            turnSound()
 			if (type === "a") {
 				computer.direction = ranDirec
 			} else if (type === "b") {
