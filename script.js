@@ -12,11 +12,11 @@ function nextPage(){
 }
 function turnSound(){
     //make turnsound play at appriopriate amounts
-    if (player.status === 1 && status.remaining !== 0) {
-        var turn = document.getElementById("turn");
-        turn.currentTime = 0;
-        turn.play();
-    }
+    // if (player.status === 1 && status.remaining !== 0) {
+    //     var turn = document.getElementById("turn");
+    //     turn.currentTime = 0;
+    //     turn.play();
+    // }
 }
 function playMusic(){
     if (player.status !== 1 || status.remaining === 0) {
@@ -257,7 +257,10 @@ function computerAI(pos, dir, type) {
 		var ranDirec = (b === 0) ? -1 : (b === 1) ? 1 : (b === 2) ? 100 : -100
 		var possibleNextPos = pos + ranDirec
 		if ($("#" + possibleNextPos).css("background-color") === status.floorColor) {
-            turnSound()
+            if(pos !== ranDirec){
+                turnSound()
+            }
+            }
 			if (type === "a") {
 				computer.direction = ranDirec
 			} else if (type === "b") {
@@ -503,23 +506,31 @@ function keyPressed(e) {
 	key = e.key
 	if (key == "a") {
 		if (player.direction !== 1) {
+            if(player.direction !== -1){
+                turnSound()
+            }
             player.direction = -1
-            turnSound()
 		}
 	} else if (key == "d") {
 		if (player.direction !== -1) {
+            if(player.direction !== 1){
+                turnSound()
+            }
             player.direction = 1
-            turnSound()
 		}
 	} else if (key == "w") {
         if (player.direction !== 100) {
-            turnSound()
+            if(player.direction !== -100){
+                turnSound()
+            }
 			player.direction = -100
 		}
 	} else if (key == "s") {
 		if (player.direction !== -100) {
+            if(player.direction !== 100){
+                turnSound()
+            }
             player.direction = 100
-            turnSound()
 		}
 	} else if (key == " ") {
 		e.preventDefault();
