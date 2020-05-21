@@ -252,15 +252,12 @@ var newDirec = 0;
 function computerAI(pos, dir, type) {
 	status.a += 1
 	if (Math.random() - 0.99 > 0) {
+        turnSound()
 		status.a = 0
 		var b = Math.floor(Math.random() * 4)
 		var ranDirec = (b === 0) ? -1 : (b === 1) ? 1 : (b === 2) ? 100 : -100
 		var possibleNextPos = pos + ranDirec
 		if ($("#" + possibleNextPos).css("background-color") === status.floorColor) {
-            if(pos !== ranDirec){
-                turnSound()
-            }
-            }
 			if (type === "a") {
 				computer.direction = ranDirec
 			} else if (type === "b") {
@@ -501,36 +498,28 @@ function resetGrid() {
     createGrid();
 }
 document.addEventListener('keydown', keyPressed)
-document.addEventListener('keyup', keyUp)
+
 function keyPressed(e) {
 	key = e.key
 	if (key == "a") {
 		if (player.direction !== 1) {
-            if(player.direction !== -1){
-                turnSound()
-            }
             player.direction = -1
+            turnSound()
 		}
 	} else if (key == "d") {
 		if (player.direction !== -1) {
-            if(player.direction !== 1){
-                turnSound()
-            }
             player.direction = 1
+            turnSound()
 		}
 	} else if (key == "w") {
         if (player.direction !== 100) {
-            if(player.direction !== -100){
-                turnSound()
-            }
+            turnSound()
 			player.direction = -100
 		}
 	} else if (key == "s") {
 		if (player.direction !== -100) {
-            if(player.direction !== 100){
-                turnSound()
-            }
             player.direction = 100
+            turnSound()
 		}
 	} else if (key == " ") {
 		e.preventDefault();
