@@ -1,4 +1,3 @@
-
 var hovered = false
 $("#titleDiv").hover(function(){
     if(hovered === false){
@@ -499,7 +498,7 @@ function resetGrid() {
     createGrid();
 }
 document.addEventListener('keydown', keyPressed)
-
+document.addEventListener('keyup', keyUp)
 function keyPressed(e) {
 	key = e.key
 	if (key == "a") {
