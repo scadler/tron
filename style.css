@@ -202,11 +202,6 @@ html {
 	transition: transform 100ms linear;
 }
 
-#mainTitle:hover::after {
-	transform: scaleX(1);
-	transform-origin: left;
-}
-
 #mainSubtext {
 	position: absolute;
 	top: calc(2vh + 340px);
@@ -217,4 +212,9 @@ html {
 	text-shadow: -3px -3px 6px #0892d0, 3px 3px 6px #0892d0, -3px 3px 6px #0892d0, 3px -3px 6px #0892d0;
 	display: flex;
 	justify-content: center;
+}
+
+#indexBody{
+    background-image: linear-gradient(#000000, #00001A);
+    height: 100vh;
 }

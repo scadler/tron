@@ -1,4 +1,5 @@
 var hovered = false
+var clickedTitle = false;
 $("#titleDiv").hover(function(){
     if(hovered === false){
         hovered = true;
@@ -46,12 +47,15 @@ $("#lightbike").onload = function() {
     //propbably because the .onload is not implemented correctly
 }
 $("#mainTitle").click(function(){
-    const music = document.getElementById("indexMusic");
-    music.pause();
-    $("#startAudio").append(`<audio id="insertCoin" preload="auto" autoplay="autoplay"><source src="insertCoin.mp3" type="audio/mp3" /></audio>`)
-    var startAudio = document.getElementById("insertCoin");
-    startAudio.volume = 0.2;
-    setTimeout(nextPage, 3800);
+    if(clickedTitle === false){
+        clickedTitle = true;
+        const music = document.getElementById("indexMusic");
+        music.pause();
+        $("#startAudio").append(`<audio id="insertCoin" preload="auto" autoplay="autoplay"><source src="insertCoin.mp3" type="audio/mp3" /></audio>`)
+        var startAudio = document.getElementById("insertCoin");
+        startAudio.volume = 0.2;
+        setTimeout(nextPage, 3800);
+    }
 });
 const status = {
 	yellow: 1,
